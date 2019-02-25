@@ -66,11 +66,9 @@ class DashController extends Controller
     public function profileEdit(Request $rq){
                    $profile = User::findOrFail(Auth::user()->id);
 
-        //dd($profile->username,$rq->all());
 
 
         // string
-        $profile->location = $rq->input("location",$profile->location) ;
         $profile->fullname = $rq->fullname;
         $profile->email    = $rq->email;
         if($profile->username != $rq->username) {
@@ -80,7 +78,6 @@ class DashController extends Controller
             $profile->username = $rq->username;
         }
 
-        $profile->jobtitle = $rq->input("jobtitle", $profile->jobtitle);
         $profile->fullname = $rq->fullname;
 
 

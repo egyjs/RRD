@@ -13,7 +13,7 @@
             <div class="sub">
                 <div class="name" data-editable>{{$profile->fullname}}</div>
                 <div class="detail">
-                    <i class="fa fa-address-card m-r-5"></i>{{ json_encode($profile->roles)  }}
+                    <i class="fa fa-address-card m-r-5"></i>{{ (json_decode($profile->roles)[0]->description)  }}
                 </div>
             </div>
         </div>
@@ -69,18 +69,6 @@
                     </div>
                 </div>
 
-                <div class="row clearfix">
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                        <label for="jobtitle">Jop Title</label>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="text" id="jobtitle" name="jobtitle" class="form-control" value="{{ $profile->jobtitle }}" >
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row clearfix">
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">

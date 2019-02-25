@@ -7,10 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 /**
+ * @property mixed id
  * @property mixed fullname
  * @property mixed username
  * @property mixed email
  * @property string password
+ * @method static where(string $string, $email)
  */
 class User extends Authenticatable
 {

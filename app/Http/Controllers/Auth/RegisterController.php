@@ -48,23 +48,22 @@ class RegisterController extends Controller
 
     public function showRegistrationForm($id = null)
     {
-        if ($id):
-            $data = Hr::where('id', $id)->first();
+            switch ($id) {
+                case "a":
+                    $data['r'] = 1;
+                    break;
+                case "b":
+                    $data['r'] = 2;
+                    break;
+                case "c":
+                    $data['r'] = 3;
+                    break;
+                default:
+                    $data['r'] = 4;
+            }
             return view('auth.register', compact('data'));
-        else:
-            return view('auth.register');
-        endif;
-
 
     }
-
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
 
     protected function validator(array $data)
     {
@@ -72,7 +71,6 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'fullname' => 'required|string|max:255',
             'username' => 'required|string|max:255|alpha_dash|unique:users',
-            "RegisterCode" => "required",
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -88,30 +86,18 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        if (RegisterCode::where([
-                ['code', $data['RegisterCode']
-                    ,['statues', 1]]])->count() !== 1):
-            $error = \Illuminate\Validation\ValidationException::withMessages([
-                'RegisterCode' => ['The Code You Entered Is Wrong'],
-            ]);
-            throw $error;
-        else:
-            // Set Statues => used To Registered Code
-            RegisterCode::where("code", $data['RegisterCode'])->update(['statues' => 1]);
-
             // Send Email To Notice User That He has Registered
             config(['mail.username' => "admin@cascocode.com", 'mail.password' => "admin@1234"]);
             // Adding User To DataBase And Redirect HIm To Dashboard
-            $role_employee = Roles::where('name', 'client')->first();
             $user = new User();
             $user->fullname = $data['fullname'];
             $user->username = $data['username'];
             $user->email = $data['email'];
             $user->password = Hash::make($data['password']);
             $user->save();
-            $user->roles()->attach($role_employee);
-            return $user;
-        endif;
+            $user->role()->insert(['roles_id'=>$data['r'],'user_id'=>$user->id]);
+
+        return $user;
     }
 
 }
