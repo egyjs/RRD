@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         $slides = Project::limit(3)->get();
         $pros = Project::inRandomOrder()->limit(7)->get();
-        $posts = Post::inRandomOrder()->limit(6)->get();
+        $posts = Post::paginate(6);
         $pageTitle = "Home";
         return view('welcome')->with(compact('pros','posts', 'slides',"pageTitle"));;
     }
@@ -25,8 +25,8 @@ class HomeController extends Controller
     {
 
         $pro = Project::where('slug', $slug)->firstOrFail();
-
         @$userTimeZone = Functions::userTimezone();
+
 
         $pageTitle = $pro->title . ' | ' . $pro->writer->fullname;
 

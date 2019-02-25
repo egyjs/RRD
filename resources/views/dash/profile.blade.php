@@ -13,7 +13,7 @@
             <div class="sub">
                 <div class="name" data-editable>{{$profile->fullname}}</div>
                 <div class="detail">
-                    <i class="fa fa-address-card m-r-5"></i>{{ $profile->roles }}
+                    <i class="fa fa-address-card m-r-5"></i>{{ json_encode($profile->roles)  }}
                 </div>
             </div>
         </div>
