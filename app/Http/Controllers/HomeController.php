@@ -18,7 +18,12 @@ class HomeController extends Controller
         $pros = Project::inRandomOrder()->limit(7)->get();
         $posts = Post::paginate(6);
         $pageTitle = "Home";
-        return view('welcome')->with(compact('pros','posts', 'slides',"pageTitle"));;
+        return view('welcome')->with(compact('pros','posts', 'slides',"pageTitle"));
+    }
+
+    public function soon()
+    {
+        return view('layouts.soon');
     }
 
     public function singleProject($slug)

@@ -17,6 +17,10 @@ $domin = config("app.domain");
 
 // Public Routes
 Route::group(['domain' => $domin, 'middleware' => ['Visitor']], function () {
+    Route::get('/', "HomeController@soon")->name('home');
+    Route::get('/home', "HomeController@index")->name('home');
+
+
     // Sitemap Routes
     Route::group(['prefix' => "sitemap.xml"], function () {
         Route::get('/', 'SitemapController@index')->name('sitemap.index');
@@ -25,7 +29,6 @@ Route::group(['domain' => $domin, 'middleware' => ['Visitor']], function () {
     });
 
 
-    Route::get('/', "HomeController@index")->name('home');
 
     // Blog Routes
     Route::group(['prefix'=>"blog"],function (){

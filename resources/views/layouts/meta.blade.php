@@ -22,8 +22,13 @@
 <link rel="icon" href="{{ url('/favicon.ico') }}">
 <!-- end favicon -->
 
+{{--// theme color --}}
+<meta name="msapplication-TileColor" content="#8c61fa" />
+<meta name="theme-color" content="#8c61fa">
+
+
 {{--{{ dd(Request::path())  }}--}}
-@if (Request::path() == '/' || Request::path() == 'blog' || Request::path() == 'project' )
+@if (Request::path() == '/' || Request::path() == 'blog' || Request::path() == 'project' || Request::path() == 'home')
 <!-- SEO Meta -->
     <link href="{{ config("app.url") }}" rel="canonical" />
     <meta name="author" content="{{ config("app.name") }}">
@@ -35,7 +40,6 @@
 <!-- favicon, cards, tiles, icons -->
 <meta name="application-name" content="{{ config("app.name") }}" />
 <meta name="msapplication-TileImage" content="{{ url('/logo.png') }}" />
-<meta name="msapplication-TileColor" content="#ff8431" />
 <meta name="msapplication-square70x70logo" content="{{ url('/logo.png') }}" />
 <meta name="msapplication-square150x150logo" content="{{ url('/logo.png') }}" />
 <meta name="msapplication-wide310x150logo" content="{{ url('/logo.png') }}" />
@@ -79,7 +83,6 @@
     <!-- favicon, cards, tiles, icons -->
     <meta name="application-name" content="{{ config("app.name") }} | {{ $pageTitle }}" />
     <meta name="msapplication-TileImage" content="{{ $image }}" />
-    <meta name="msapplication-TileColor" content="#ff8431" />
     <meta name="msapplication-square70x70logo" content="{{ $image }}" />
     <meta name="msapplication-square150x150logo" content="{{ $image }}" />
     <meta name="msapplication-wide310x150logo" content="{{ $image }}" />
