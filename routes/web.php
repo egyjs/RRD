@@ -63,6 +63,9 @@ Route::group(["namespace"=>'Dash',"domain"=>$domin],function(){
         Route::get('/visit','DashController@visits')->name('dash.visits');
 
 
+        // Add Menu
+        Route::get('/add/menu','MenuController@add')->name('dash.add.menu');
+
 
 
         // Profile Routes

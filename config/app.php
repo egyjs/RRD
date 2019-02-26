@@ -197,6 +197,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         ZanySoft\Zip\ZipServiceProvider::class,
         Conner\Tagging\Providers\TaggingServiceProvider::class,
+        Harimayco\Menu\MenuServiceProvider::class,
+
 
     ],
 
@@ -248,6 +250,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Zip' => ZanySoft\Zip\ZipFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Menu' => Harimayco\Menu\Facades\Menu::class,
+
 
     ],
 
