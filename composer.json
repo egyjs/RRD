@@ -43,8 +43,7 @@
         },
         "files": ["app/helpers/functions.php"],
         "classmap": [
-            "database/seeds",
-            "database/factories"
+            "database/seeds"
         ]
     },
     "autoload-dev": {
