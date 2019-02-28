@@ -7,9 +7,11 @@
         <li><a href="javascript:void(0);" class="menu-toggle"><i class="material-icons">visibility</i><span>View</span></a>
             <ul class="ml-menu">
                 @if(hasRole('manager') or hasRole('Writer'))
-                    <li><a href="{{route('dash.view.project')}}"><i class="material-icons">view_compact</i><span class="fix-nav">View Project</span></a></li>
-                    <li><a href="{{route('dash.view.pages')}}"><i class="material-icons">pages</i><span class="fix-nav">View Pages</span></a></li>
-                    <li><a href="{{route('dash.view.posts')}}"><i class="icofont-letter material-icons"></i><span class="fix-nav">View Posts</span></a></li>
+                <li><a href="{{route('dash.view.project')}}"><i class="material-icons">view_compact</i><span class="fix-nav">View Project</span></a></li>
+                @endif
+                @if(hasRole('manager') or hasRole('Writer'))
+                <li><a href="{{route('dash.view.pages')}}"><i class="material-icons">pages</i><span class="fix-nav">View Pages</span></a></li>
+                <li><a href="{{route('dash.view.posts')}}"><i class="icofont-letter material-icons"></i><span class="fix-nav">View Posts</span></a></li>
                 @endif
             </ul>
         </li>
@@ -20,7 +22,6 @@
         <li><a href="javascript:void(0);" class="menu-toggle"><i class="material-icons">add</i><span>Add</span></a>
             <ul class="ml-menu">
                 @if(hasRole('manager') or hasRole('Writer'))
-                    <li><a href="{{route('dash.add.menu')}}"><i class="icofont-letter material-icons"></i><span class="fix-nav">Add Menu</span></a></li>
                     <li><a href="{{route('dash.add.post')}}"><i class="icofont-letter material-icons"></i><span class="fix-nav">Add Post</span></a></li>
                     <li><a href="{{route('dash.add.page')}}"><i class="material-icons">pages</i><span class="fix-nav">Add Page</span></a></li>
                     <li><a href="{{route('dash.add.project')}}"><i class="material-icons">view_compact</i><span class="fix-nav">Add Project</span></a></li>
