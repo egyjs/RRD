@@ -1,4 +1,4 @@
-<title>Casco Code | {{ $pageTitle ?? '' }}</title>
+<title> {{ config('app.name') }} | {{ $pageTitle ?? '' }}</title>
 
 <!-- Meta Tags
 ========================== -->
@@ -28,7 +28,7 @@
 
 
 {{--{{ dd(Request::path())  }}--}}
-@if (Request::path() == '/' || Request::path() == 'blog' || Request::path() == 'project' || Request::path() == 'home')
+@if (Request::path() == '/' || Request::path() == 'blogs' || Request::path() == 'projects' || Request::path() == 'home')
 <!-- SEO Meta -->
     <link href="{{ config("app.url") }}" rel="canonical" />
     <meta name="author" content="{{ config("app.name") }}">

@@ -20,9 +20,8 @@ class CreateProjectsTable extends Migration
 
             //strings
             $table->string("title");
-            $table->string("language",100); // EX. PHP,HTMl
             $table->integer("by"); // EX. by : ysf or abd (id)
-            $table->string("byName"); // EX. by : ysf or abd (name)
+            $table->string("byName");
 
             //long strings
             $table->text("slug");
@@ -30,8 +29,6 @@ class CreateProjectsTable extends Migration
             $table->text("description"); // short description
             $table->text("content");
             $table->text("imgs"); // all images of project in json
-            $table->text("demoUrl"); // EX. elzahaby.cv.com/TitleOfProject
-            $table->text("gitUrl"); // github link
             //date
             $table->timestamps();
         });

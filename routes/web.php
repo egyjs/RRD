@@ -31,15 +31,15 @@ Route::group(['domain' => $domin, 'middleware' => ['Visitor']], function () {
 
 
     // Blog Routes
-    Route::group(['prefix'=>"blog"],function (){
+    Route::group(['prefix'=>"blogs"],function (){
         Route::get("/","BlogController@index")->name('blog');
         Route::get("/{title}","BlogController@post")->name('blog.post');
     });
 
     // Projects Routes
-    Route::group(['prefix'=>"project"],function (){
+    Route::group(['prefix'=>"projects"],function (){
         Route::get("/", "HomeController@allProjects")->name('projects');
-        Route::get('/{slug}', 'HomeController@singleProject')->name('home.single.project');
+        Route::get('/{slug}', 'HomeController@singleProject')->name('project.post');
     });
 
     // Auth Routes

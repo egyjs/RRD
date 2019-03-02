@@ -25,161 +25,46 @@
     <div class="container box_1170 main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index.html"><img src="logo.png" height="100" alt="" title="" /></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('logo.png') }}" height="100" alt="" title="" /></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-active"><a href="index.html">Home</a></li>
-                    <li><a href="category.html">Category</a></li>
-                    <li><a href="archive.html">Archive</a></li>
-                    <li class="menu-has-children"><a href="">Pages</a>
-                        <ul>
-                            <li><a href="elements.html">Elements</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-has-children"><a href="">Blog</a>
-                        <ul>
-                            <li><a href="blog-details.html">Blog Details</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    @foreach(config('site.menu') as $name=> $url)
+                        <li @if($url == "true")  class="menu-has-children" @endif>
+                            <a href="{{ url($url) }}">
+                                {{$name}}
+                            </a>
+                            @if($url == "true")
+                                @if(!empty(loopMenu($name)))
+                                    <ul>
+                                        @foreach((loopMenu($name)) as $subN => $subU)
+                                            <li><a href="{{ url(@$subU) }}">{{ @$subN }}</a></li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+
+                            @endif
+                        </li>
+                    @endforeach
                 </ul>
             </nav>
         </div>
     </div>
 </header>
 <!-- End header Area -->
-
-<!-- Start banner Area -->
-<section class="banner-area">
-    <div class="container box_1170">
-        <div class
-             ="row fullscreen d-flex align-items-center justify-content-center">
-            <div class="banner-content text-center col-lg-8">
-                <h1>
-                    Charter Yacht <br>
-                    The Luxury Of Traveling
-                </h1>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End banner Area -->
-
-<!-- Start Post Silder Area -->
-<section class="post-slider-area">
-    <div class="container box_1170">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="owl-carousel active-post-carusel">
-                    <div class="post-box mb-30">
-                        <div class="d-flex">
-                            <div>
-                                <a href="#">
-                                    <img src="main/img/author/a1.png" alt="">
-                                </a>
-                            </div>
-                            <div class="post-meta">
-                                <div class="meta-head">
-                                    <a href="#">Marvel Maison</a>
-                                </div>
-                                <div class="meta-details">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-calendar-full"></span>
-                                                13th Oct, 2018
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-picture"></span>
-                                                Image Post
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-coffee-cup"></span>
-                                                Food & Travel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-bubble"></span>
-                                                03 Comments
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                        <div class="post-btn">
-                            <a href="#" class="primary-btn text-uppercase">Read More</a>
-                        </div>
-                    </div>
-
-                    <div class="post-box mb-30">
-                        <div class="d-flex">
-                            <div>
-                                <a href="#">
-                                    <img src="main/img/author/a1.png" alt="">
-                                </a>
-                            </div>
-                            <div class="post-meta">
-                                <div class="meta-head">
-                                    <a href="#">Marvel Maison</a>
-                                </div>
-                                <div class="meta-details">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-calendar-full"></span>
-                                                13th Oct, 2018
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-picture"></span>
-                                                Image Post
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-coffee-cup"></span>
-                                                Food & Travel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span class="lnr lnr-bubble"></span>
-                                                03 Comments
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                        <div class="post-btn">
-                            <a href="#" class="primary-btn text-uppercase">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Post Slider Area -->
-
-<!-- Start main body Area -->
+@if (Request::path() == '/' || Request::path() == 'home')
+    @include('nav.index')
+@else
+    @include('nav.page')
+@endif
+    <!-- Start main body Area -->
 <div class="main-body section-gap mt--30">
     <div class="container box_1170">
         <div class="row">
             @yield("page")
-            @include('layouts.sidebar')
+            @if (Request::path() == '/' || Request::path() == 'home')
+                @include('layouts.sidebar')
+            @endif
         </div>
     </div>
 </div>
@@ -266,6 +151,10 @@
 <script src="{{ asset('main/js/waypoints.min.js') }}"></script>
 <script src="{{ asset('main/js/mail-script.js') }}"></script>
 <script src="{{ asset('main/js/main.js') }}"></script>
+
+    <script id="dsq-count-scr" src="//rrd-2.disqus.com/count.js" async></script>
+@stack("js")
+
 </body>
 
 </html>

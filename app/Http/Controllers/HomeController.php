@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\{
-    Post, Project, Service, Social, User, Visits
+    Post, Project, User, Visits
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -14,11 +14,12 @@ class HomeController extends Controller
 
     public function index()
     {
-        $slides = Project::limit(3)->get();
+        $slides = Project::orderBy('id', 'desc')->limit(3)->get();
         $pros = Project::inRandomOrder()->limit(7)->get();
-        $posts = Post::paginate(6);
+        $posts = Post::paginate(8);
+        $singlePost_widget= Post::orderBy('id', 'desc')->first();
         $pageTitle = "Home";
-        return view('welcome')->with(compact('pros','posts', 'slides',"pageTitle"));
+        return view('welcome')->with(compact('pros','posts', 'slides',"pageTitle",'singlePost_widget'));
     }
 
     public function soon()
@@ -30,28 +31,21 @@ class HomeController extends Controller
     {
 
         $pro = Project::where('slug', $slug)->firstOrFail();
-        @$userTimeZone = Functions::userTimezone();
 
 
-        $pageTitle = $pro->title . ' | ' . $pro->writer->fullname;
+        $pageTitle = $pro->title ;
 
 
         $description = $pro->description;
         $keywords = implode(', ', $pro->tagNames());
         $image = $pro->thumbnail;
 
+        $creator = '';
+        $next = Project::where('id', '>', $pro->id)->first();
+        $perv = Project::where('id', '<', $pro->id)->first();
 
-        $creator = Social::where('by', User::find($pro->by)->id)
-            ->where('url', 'like', '%twitter.com%')
-            ->first();
-        if ($creator != null) {
-            preg_match("/http(s):\/\/twitter.com\/(#!\/)?([^\/]*)/", $creator->url, $creator);
-            $creator = '@' . end($creator);
-        } else {
-            $creator = '@cascocode';
-        }
 
-        return view("pro.post", compact("pro", "userTimeZone", 'pageTitle', 'keywords', 'description', 'image', 'creator')); //
+        return view("pro.post", compact("pro", 'pageTitle', 'keywords', 'description', 'image', 'creator','next','perv')); //
     }
 
     public function services(){

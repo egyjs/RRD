@@ -14,7 +14,7 @@ class mksite extends Command
      *
      * @var string
      */
-    protected $signature = 'mksite';
+    protected $signature = 'mksite {--config}';
 
     /**
      * The console command description.
@@ -40,22 +40,33 @@ class mksite extends Command
      */
     public function handle()
     {
-        Artisan::call('migrate', array(), $this->getOutput());
-        $this->comment("");
+        $config = $this->option('config');
+        if (($config) == null) {
+            Artisan::call('migrate', array(), $this->getOutput());
+            $this->comment("");
 
-        Artisan::call('db:seed', array(), $this->getOutput());
+            Artisan::call('db:seed', array(), $this->getOutput());
 
-        $this->comment("");
-        $this->comment("Create a SuperUser(admin):");
+            $this->comment("");
 
-        $su = new User();
-        $su->fullname = $this->ask('what is your name?','admin');
-        $su->username = $this->ask('Chose your Username?','admin');
-        $su->email = $this->ask('what is your email?');
-        $su->password = Hash::make($this->ask('what is your password?'));
-        $su->role()->insert(['roles_id'=>1,'user_id'=>1]);
-        $su->save();
-        $this->comment('site is DONE :) ');
+        }
+        if(!User::where('id', 1)->exists()){
+            $this->comment("Create a SuperUser(admin):");
+
+            $su = new User();
+            $su->fullname = $this->ask('what is your name?','admin');
+            $su->username = $this->ask('Chose your Username?','admin');
+            $su->email = $this->ask('what is your email?');
+            $su->password = Hash::make($this->ask('what is your password?'));
+            $su->role()->insert(['roles_id'=>1,'user_id'=>1]);
+            $su->save();
+            $this->comment('site is DONE :) ');
+        }
+
+        Artisan::call('mksite:config', array(), $this->getOutput());
+
+
+
 
     }
 }

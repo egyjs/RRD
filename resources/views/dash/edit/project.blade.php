@@ -33,7 +33,7 @@
                             {{ method_field('PATCH') }}
                             @csrf
                             <div class="row clearfix">
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">Project Name</label>
                                         <div class="form-line">
@@ -41,35 +41,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label class="control-label">Project Language</label>
-                                        <select class="form-control show-tick" name="prolang" required data-live-search="true">
-                                            <option value="{{ $pro->language }}">{{ $pro->language }}</option> <option disabled>--- POPULAR LANGUAGES ---</option> <option value="Bash">Bash</option> <option value="C">C</option> <option value="C#">C#</option> <option value="C++">C++</option> <option value="CSS">CSS</option> <option value="HTML">HTML</option> <option value="Java">Java</option> <option value="JavaScript">JavaScript</option> <option value="JSON">JSON</option> <option value="Lua">Lua</option> <option value="Markdown">Markdown</option> <option value="Objective C">Objective C</option> <option value="Perl">Perl</option> <option value="PHP">PHP</option> <option value="Python">Python</option> <option value="Ruby">Ruby</option> <option value="Swift">Swift</option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="control-label">Project Description</label>
                                         <div class="form-line">
                                             <input type="text" name="prodesc" value="{{ $pro->description }}" class="form-control" placeholder="Pro. Description" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Project Demo URL</label>
-                                        <div class="form-line">
-                                            <input type="url" name="demourl" value="{{ $pro->demoUrl }}" class="form-control" placeholder="Demo URL">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Project Github URL</label>
-                                        <div class="form-line">
-                                            <input type="url" name="giturl" value="{{ $pro->gitUrl }}" class="form-control" placeholder="Github URL">
                                         </div>
                                     </div>
                                 </div>

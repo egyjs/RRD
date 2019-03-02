@@ -29,7 +29,7 @@
 
                 <div class="card-header center-align white h2">
                     <img src="{{ asset('logo.png') }}" style="height: 100px">
-                    <span class="text-primary">RRD</span>
+                    <span class="text-primary"> {{ config('app.name') }}</span>
                 </div>
 
                 <div class="card-body">

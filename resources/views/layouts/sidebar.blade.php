@@ -6,17 +6,17 @@
         </form>
     </div>
 
-    <div class="single-widget protfolio-widget">
-        <img class="img-fluiNewsletterd" src="img/blog/user2.png" alt="">
+
+        <div class="single-widget protfolio-widget">
+        <img class="img-fluiNewsletterd" src="{{ ($singlePost_widget->thumbnail) }}"  style="max-width: 100%; max-height: 200px" alt="">
         <a href="#">
-            <h4>Charlie ALison Barber</h4>
+            <h4>{{ $singlePost_widget->title }}</h4>
         </a>
         <div class="desigmation">
-            <p>Senior blog writer</p>
+            <p>{{ $singlePost_widget->writer->fullname }}</p>
         </div>
         <p>
-            Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend
-            money on boot camp whenyou can get. Boot camps have itssuppor ters andits detractors.
+            {{ $function->shorter($singlePost_widget->content,150) }}.
         </p>
         <ul>
             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -25,56 +25,56 @@
             <li><a href="#"><i class="fa fa-behance"></i></a></li>
         </ul>
     </div>
-
-    <div class="single-widget popular-posts-widget">
-        <h4 class="title">Popular Posts</h4>
-        <div class="blog-list ">
-            <div class="single-popular-post d-flex flex-row">
-                <div class="popular-thumb">
-                    <img class="img-fluid" src="img/blog/r1.jpg" alt="">
-                </div>
-                <div class="popular-details">
-                    <a href="blog-details.html">
-                        <h4>Space Final Frontier</h4>
-                    </a>
-                    <p class="text-uppercase">02 hours ago</p>
-                </div>
-            </div>
-            <div class="single-popular-post d-flex flex-row">
-                <div class="popular-thumb">
-                    <img class="img-fluid" src="img/blog/r2.jpg" alt="">
-                </div>
-                <div class="popular-details">
-                    <a href="blog-details.html">
-                        <h4>The Amazing Hubble</h4>
-                    </a>
-                    <p class="text-uppercase">02 hours ago</p>
-                </div>
-            </div>
-            <div class="single-popular-post d-flex flex-row">
-                <div class="popular-thumb">
-                    <img class="img-fluid" src="img/blog/r3.jpg" alt="">
-                </div>
-                <div class="popular-details">
-                    <a href="blog-details.html">
-                        <h4>Astronomy Astrology</h4>
-                    </a>
-                    <p class="text-uppercase">02 hours ago</p>
-                </div>
-            </div>
-            <div class="single-popular-post d-flex flex-row">
-                <div class="popular-thumb">
-                    <img class="img-fluid" src="img/blog/r4.jpg" alt="">
-                </div>
-                <div class="popular-details">
-                    <a href="blog-details.html">
-                        <h4>Asteroids telescope</h4>
-                    </a>
-                    <p class="text-uppercase">02 hours ago</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{----}}
+    {{--<div class="single-widget popular-posts-widget">--}}
+        {{--<h4 class="title">Popular Posts</h4>--}}
+        {{--<div class="blog-list ">--}}
+            {{--<div class="single-popular-post d-flex flex-row">--}}
+                {{--<div class="popular-thumb">--}}
+                    {{--<img class="img-fluid" src="img/blog/r1.jpg" alt="">--}}
+                {{--</div>--}}
+                {{--<div class="popular-details">--}}
+                    {{--<a href="blog-details.html">--}}
+                        {{--<h4>Space Final Frontier</h4>--}}
+                    {{--</a>--}}
+                    {{--<p class="text-uppercase">02 hours ago</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="single-popular-post d-flex flex-row">--}}
+                {{--<div class="popular-thumb">--}}
+                    {{--<img class="img-fluid" src="img/blog/r2.jpg" alt="">--}}
+                {{--</div>--}}
+                {{--<div class="popular-details">--}}
+                    {{--<a href="blog-details.html">--}}
+                        {{--<h4>The Amazing Hubble</h4>--}}
+                    {{--</a>--}}
+                    {{--<p class="text-uppercase">02 hours ago</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="single-popular-post d-flex flex-row">--}}
+                {{--<div class="popular-thumb">--}}
+                    {{--<img class="img-fluid" src="img/blog/r3.jpg" alt="">--}}
+                {{--</div>--}}
+                {{--<div class="popular-details">--}}
+                    {{--<a href="blog-details.html">--}}
+                        {{--<h4>Astronomy Astrology</h4>--}}
+                    {{--</a>--}}
+                    {{--<p class="text-uppercase">02 hours ago</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="single-popular-post d-flex flex-row">--}}
+                {{--<div class="popular-thumb">--}}
+                    {{--<img class="img-fluid" src="img/blog/r4.jpg" alt="">--}}
+                {{--</div>--}}
+                {{--<div class="popular-details">--}}
+                    {{--<a href="blog-details.html">--}}
+                        {{--<h4>Asteroids telescope</h4>--}}
+                    {{--</a>--}}
+                    {{--<p class="text-uppercase">02 hours ago</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <div class="single-widget category-widget">
         <h4 class="title">Post Categories</h4>
@@ -82,24 +82,7 @@
             <li><a href="#" class="justify-content-between align-items-center d-flex">
                     <p>Techlology</p> <span>37</span>
                 </a></li>
-            <li><a href="#" class="justify-content-between align-items-center d-flex">
-                    <p>Lifestyle</p> <span>24</span>
-                </a></li>
-            <li><a href="#" class="justify-content-between align-items-center d-flex">
-                    <p>Fashion</p> <span>59</span>
-                </a></li>
-            <li><a href="#" class="justify-content-between align-items-center d-flex">
-                    <p>Art</p> <span>29</span>
-                </a></li>
-            <li><a href="#" class="justify-content-between align-items-center d-flex">
-                    <p>Food</p> <span>15</span>
-                </a></li>
-            <li><a href="#" class="justify-content-between align-items-center d-flex">
-                    <p>Architecture</p> <span>09</span>
-                </a></li>
-            <li><a href="#" class="justify-content-between align-items-center d-flex">
-                    <p>Adventure</p> <span>44</span>
-                </a></li>
+
         </ul>
     </div>
 

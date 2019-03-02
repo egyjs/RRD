@@ -37,18 +37,15 @@
                                     <li>
                                         <a href="#">
                                             <span class="lnr lnr-tag"></span>
-                                            (
-                                            @foreach($post->tagNames() as $tag)
-                                                {{ $tag."," }}
-                                            @endforeach
-                                            )
+                                            ({{ implode(' , ',$post->tagNames())  }})
+
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <div href="#">
                                             <span class="lnr lnr-bubble"></span>
-                                            03 Comments
-                                        </a>
+                                            <a href="{{ route("blog.post",$post->slug).'#disqus_thread' }}">00 Comments</a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -57,8 +54,10 @@
                 </div>
             </div>
             @endforeach
+                {{ $posts->links() }}
+
         </section>
-        <!-- Start Post Area -->
+        <!-- End Post Area -->
     </div>
 @endsection
 @push('js')

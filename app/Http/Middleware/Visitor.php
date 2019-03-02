@@ -30,7 +30,6 @@ class Visitor
 
             $client = new Client();
             $req = $client->request('GET', config('app.timezone_api') . $request->ip() . '/json/');
-            echo $req->getStatusCode();
 
             //$place = json_decode($req->getBody());
 //

@@ -39,9 +39,6 @@ class ProjectsController extends Controller
         auth()->user()->authorizeRoles(['manager','employee']);
         $validatedData = $req->validate([
             'protitle' => 'required|max:255',
-            'giturl' => 'url',
-            'demourl'=> 'url',
-            'prolang'=>"required",
             'procont' => 'required',
         ]);
         $cont = $req->input("procont");
@@ -53,14 +50,11 @@ class ProjectsController extends Controller
         }
         $pro = new Project();
         $pro->title = $req->protitle;
-        $pro->language = $req->prolang;
         $pro->by = Auth::user()->id;
         $pro->byname = Auth::user()->fullname;
         $pro->description = $req->prodesc;
         $pro->content = $cont;
         $pro->imgs = json_encode($urls);
-        $pro->demoUrl = $req->demourl;
-        $pro->gitUrl = $req->giturl;
         $pro->save();
         $pro->tag($req->keyword);
         return redirect(route('dash.view.project'))->with(['statues'=>"success","msg"=>"Successfully Added Your Project To Database"]);
@@ -82,9 +76,6 @@ class ProjectsController extends Controller
         auth()->user()->authorizeRoles(['manager','employee']);
         $validatedData = $req->validate([
             'protitle' => 'required|max:255',
-            'giturl' => 'url',
-            'demourl'=> 'url',
-            'prolang'=>"required",
             'procont' => 'required',
         ]);
         $cont = $req->input("procont");
@@ -96,12 +87,9 @@ class ProjectsController extends Controller
         }
         $pro = Project::find($id);
         $pro->title = $req->protitle;
-        $pro->language = $req->prolang;
         $pro->description = $req->prodesc;
         $pro->content = $cont;
         $pro->imgs = json_encode($urls);
-        $pro->demoUrl = $req->demourl;
-        $pro->gitUrl = $req->giturl;
         $pro->retag($req->keyword);
         $pro->save();
         return redirect(route('dash.view.project'))->with(['statues'=>"success","msg"=>"Successfully Updated Your Project In Database"]);
