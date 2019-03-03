@@ -102,15 +102,8 @@
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="single-footer-widget instafeed">
                     <h6 class="footer_title">Instagram Feed</h6>
-                    <ul class="list instafeed d-flex flex-wrap">
-                        <li><img src="img/i1.jpg" alt=""></li>
-                        <li><img src="img/i2.jpg" alt=""></li>
-                        <li><img src="img/i3.jpg" alt=""></li>
-                        <li><img src="img/i4.jpg" alt=""></li>
-                        <li><img src="img/i5.jpg" alt=""></li>
-                        <li><img src="img/i6.jpg" alt=""></li>
-                        <li><img src="img/i7.jpg" alt=""></li>
-                        <li><img src="img/i8.jpg" alt=""></li>
+                    <ul class="list instafeed d-flex flex-wrap" id="instagram-feed">
+                        <ul>loading...</ul>
                     </ul>
                 </div>
             </div>
@@ -119,10 +112,9 @@
                     <h6 class="footer_title">Follow Us</h6>
                     <p>Let us be social</p>
                     <div class="f_social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
+                        @foreach((config('site.social')) as $name => $url)
+                            <a href="{{http($url)}}" target="_blank"><i class="fa fa-{{$name}}"></i></a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -152,8 +144,30 @@
 <script src="{{ asset('main/js/mail-script.js') }}"></script>
 <script src="{{ asset('main/js/main.js') }}"></script>
 
-    <script id="dsq-count-scr" src="//rrd-2.disqus.com/count.js" async></script>
+<script type="text/javascript" src="{{ asset('main/js/jquery.instagramFeed.min.js') }}"></script>
+<script type="text/javascript">
+    (function($){
+        $(window).on('load', function(){
+            $.instagramFeed({
+                'username': '{{  username( config('site.social.instagram') ) }}',
+                'container': "#instagram-feed",
+                'display_profile': false,
+                'display_biography': false,
+                'display_gallery': true,
+                'get_raw_json': false,
+                'callback': null,
+                'styling': true,
+                'items': 6,
+                'items_per_row': 3,
+                'margin': 1
+            });
+        });
+    })(jQuery);
+</script>
+
+
 @stack("js")
+<script id="dsq-count-scr" src="//rrd-2.disqus.com/count.js" async></script>
 
 </body>
 

@@ -18,6 +18,7 @@ class HomeController extends Controller
         $pros = Project::inRandomOrder()->limit(7)->get();
         $posts = Post::paginate(8);
         $singlePost_widget= Post::orderBy('id', 'desc')->first();
+
         $pageTitle = "Home";
         return view('welcome')->with(compact('pros','posts', 'slides',"pageTitle",'singlePost_widget'));
     }

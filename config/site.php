@@ -12,6 +12,6 @@
   array (
     'facebook' => 'fb.com/el3zahaby',
     'twitter' => 'tw.com/',
-    'instagram' => 'egy.js',
+    'instagram' => 'https://www.instagram.com/egy.js/',
   ),
 );

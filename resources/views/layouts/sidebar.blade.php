@@ -19,10 +19,9 @@
             {{ $function->shorter($singlePost_widget->content,150) }}.
         </p>
         <ul>
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+            @foreach((config('site.social')) as $name => $url)
+                <li><a href="{{http($url)}}" target="_blank"><i class="fa fa-{{$name}}"></i></a></li>
+            @endforeach
         </ul>
     </div>
     {{----}}
@@ -76,15 +75,6 @@
         {{--</div>--}}
     {{--</div>--}}
 
-    <div class="single-widget category-widget">
-        <h4 class="title">Post Categories</h4>
-        <ul>
-            <li><a href="#" class="justify-content-between align-items-center d-flex">
-                    <p>Techlology</p> <span>37</span>
-                </a></li>
-
-        </ul>
-    </div>
 
     {{--<div class="single-widget newsletter-widget">--}}
         {{--<h4 class="title">Newsletter</h4>--}}

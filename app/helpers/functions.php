@@ -48,3 +48,9 @@ function http($url) {
     }
     return $url;
 }
+
+
+function username($url){
+    $array = parse_url($url);
+    return str_replace('/',"",$array['path']);
+}
