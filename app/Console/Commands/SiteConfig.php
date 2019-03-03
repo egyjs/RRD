@@ -81,6 +81,7 @@ return [
 
 
         //  envUpdate('APP_NAME',$this->ask('what is your site name'));
+//          envUpdate('APP_NAME',$this->ask('what is your site name'));
         config::set(['site.short_desc' => $this->ask('what is your site SHORT description',config('site.short_desc'))]);
         config::set(['site.long_desc' => $this->ask('what is your site LONG description',config('site.long_desc'))]);
 

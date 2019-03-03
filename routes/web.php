@@ -11,12 +11,12 @@
 |
 */
 
-$domin = config("app.domain");
-// User View
+//$domin = config("app.domain");
+
 
 
 // Public Routes
-Route::group(['domain' => $domin, 'middleware' => ['Visitor']], function () {
+Route::group(['middleware' => ['Visitor']], function () {
     Route::get('/', "HomeController@soon")->name('home');
     Route::get('/home', "HomeController@index")->name('home');
 
@@ -53,7 +53,7 @@ Route::group(['domain' => $domin, 'middleware' => ['Visitor']], function () {
 
 
 // Dashboard Routes
-Route::group(["namespace"=>'Dash',"domain"=>$domin],function(){
+Route::group(["namespace"=>'Dash'],function(){
     Route::prefix('dashboard')->group(function (){
         //Dashboard Homepage
         Route::get('/','DashController@index')->name('dash.home');
