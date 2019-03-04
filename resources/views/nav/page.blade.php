@@ -1,5 +1,5 @@
 <!-- Start banner Area -->
-<section class="banner-area relative"style="background-image: url({{ $image }})">
+<section class="banner-area relative"  {{ (isset($image))? 'style="background-image: url('.$image .')"' : ""}}>
     <div class="overlay overlay-bg"></div>
     <div class="container box_1170">
         <div class="row d-flex align-items-center justify-content-center">

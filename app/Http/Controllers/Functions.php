@@ -18,7 +18,7 @@ class Functions
 
     public function shorter($input, $length)
     {
-        return  str_replace('&nbsp;', ' ', substr(preg_replace('#<[^>]+>#', ' ', $input), 0, $length))."...";
+        return  shorter($input,$length);
     }
 
     public static function search($in, $data = array()){

@@ -4,7 +4,7 @@
   'menu' => 
   array (
     'Home' => 'home',
-    'Blog' => 'blog',
+    'Blog' => 'blogs',
     'Projects' => 'projects',
     'Pages' => 'true',
   ),

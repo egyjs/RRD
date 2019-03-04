@@ -57,7 +57,7 @@ return [
     |
     */
     
-      \'short_desc\' => NULL,
+      \'short_desc\' => env(\'APP_DESCRIPTION\', \'Site Description\'),
       \'long_desc\' => NULL,
       \'menu\' =>[ /* use `url()` helper with names */
             "Home"=> "home",
@@ -79,10 +79,10 @@ return [
             Artisan::call('config:cache');
         }
 
+        envUpdate(['APP_NAME'=>$this->ask('what is your site name')]);
 
-        //  envUpdate('APP_NAME',$this->ask('what is your site name'));
-//          envUpdate('APP_NAME',$this->ask('what is your site name'));
-        config::set(['site.short_desc' => $this->ask('what is your site SHORT description',config('site.short_desc'))]);
+        $Sdisc =  $this->ask('what is your site SHORT description',config('site.short_desc'));
+        envUpdate(['APP_DESCRIPTION'=> $Sdisc]);
         config::set(['site.long_desc' => $this->ask('what is your site LONG description',config('site.long_desc'))]);
 
         config::set(['site.social.facebook' => $this->ask("Facebook Link [you can leave it blank]",config('site.social.facebook'))]);
@@ -93,7 +93,6 @@ return [
         fwrite($fp, '<?php return ' . var_export(config('site'), true) . ';');
         fclose($fp);
         Artisan::call('config:cache');
-
 
     }
 }

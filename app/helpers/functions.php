@@ -10,22 +10,45 @@ function hasRole($roleName){
 
 /**
  * Update Laravel Env file Key's Value
- * @param string $key
- * @param string $value
+ * @param array $data
  * @return string
  */
- function envUpdate($name, $value)
+ function envUpdate($data = array())
 {
     $path = base_path('.env');
 
     if (file_exists($path)) {
-        file_put_contents($path, str_replace(
-            $name . '="' . env($name).'"', $name . '="' . $value.'"', file_get_contents($path)
-        ));
-        file_put_contents($path, str_replace(
-            $name . '=' . env($name), $name . '=' . $value, file_get_contents($path)
-        ));
-        return 'Edit done:' . "replaced key value $name to $value" ;
+        if (!count($data)) {
+            return;
+        }
+
+        $pattern = '/([^\=]*)\=[^\n]*/';
+
+        $envFile = $path;
+        $lines = file($envFile);
+        $newLines = [];
+        foreach ($lines as $line) {
+            preg_match($pattern, $line, $matches);
+
+            if (!count($matches)) {
+                $newLines[] = $line;
+                continue;
+            }
+
+            if (!key_exists(trim($matches[1]), $data)) {
+                $newLines[] = $line;
+                continue;
+            }
+
+            $line = trim($matches[1]) . "=\"{$data[trim($matches[1])]}\"\n";
+            $newLines[] = $line;
+        }
+
+
+        $newContent = implode('', $newLines);
+        file_put_contents($envFile, $newContent);
+        return 'Edit done:' . "replaced key value " ;
+
 
     }
 
@@ -53,4 +76,9 @@ function http($url) {
 function username($url){
     $array = parse_url($url);
     return str_replace('/',"",$array['path']);
+}
+
+function shorter($input, $length)
+{
+    return  str_replace('&nbsp;', ' ', substr(preg_replace('#<[^>]+>#', ' ', $input), 0, $length))."...";
 }

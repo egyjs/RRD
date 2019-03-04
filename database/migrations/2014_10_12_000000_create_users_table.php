@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('fullname');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('img')->default("https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y");
+            $table->string('img')->default('/logoc.png');
             $table->string('cover')->default("https://a.top4top.net/p_944jawmq1.jpg");
             $table->string('username')->unique();
             $table->string('email')->unique();

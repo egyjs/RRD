@@ -21,7 +21,7 @@
                                     <p>{{  date("d M Y h:i a", strtotime($pro->created_at)) }}</p>
                                 </div>
                                 <div class="d-flex">
-                                    <img src="img/blog/user-img.jpg" alt="">
+                                    <img src="{{ $pro->writer->img }}" alt="">
                                 </div>
                             </div>
                         </div>

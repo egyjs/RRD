@@ -29,7 +29,7 @@
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    @foreach(config('site.menu') as $name=> $url)
+                    @foreach(config('site.menu') as $name => $url)
                         <li @if($url == "true")  class="menu-has-children" @endif>
                             <a href="{{ url($url) }}">
                                 {{$name}}
