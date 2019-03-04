@@ -29,10 +29,10 @@
                     <div class="header">
                         <h2> Add Page </h2>
                     </div>
-                    <form enctype="multipart/form-data" class="body" method="post" action="{{ route('dash.addpage.p') }}">
+                    <form  class="body" method="post" action="{{ route('dash.addpage.p') }}" novalidate>
                         @csrf
                         <div class="row clearfix">
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <div class="form-group">
                                     <label class="control-label">Page Name</label>
                                     <div class="form-line">
@@ -47,10 +47,10 @@
                                     <label class="control-label">Statues</label>
                                     <div class="switch">
                                     <label>
-                                        Off
-                                        <input name="statues" type="checkbox">
+                                        deactivate
+                                        <input name="statues" checked type="checkbox">
                                         <span class="lever"></span>
-                                        On
+                                        activate
                                     </label>
                                 </div>
                                 </div>
@@ -74,7 +74,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Page Information</label>
-                                    <textarea id="summernote" rows="5" class="form-control" name="pagecont" required></textarea>
+                                    <textarea id="summernote" rows="5" class="form-control my-editor"  name="pagecont" required></textarea>
                                 </div>
                             </div>
 
@@ -89,6 +89,8 @@
     </div>
 @endsection
 @push("js")
+    <script src="{{ asset('dash/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js') }}"></script>
+    <script src="{{ asset('dash/plugins/jquery-datatable/extensions/export/pdfmake.min.js') }}"></script>
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>
         var editor_config = {
@@ -106,8 +108,12 @@
             setup: function (editor) {
                 editor.on('submit', function (e) {
                     if ($(this.getContent()).find('img').length == 0){
-                        confirm('There Is No Image Inserted !')
-                        e.preventDefault();
+
+                        if(confirm('There Is No Image Inserted ! Do you need to continue without it ?') == true){
+
+                        }else {
+                            e.preventDefault();
+                        }
                     }
                 });
             },

@@ -62,7 +62,8 @@ function loopMenu($name){
         $name = $name."s";
     }
     $tableName = lcfirst($name);
-     \Illuminate\Support\Facades\DB::table($tableName)->get(['title','slug']);
+    return \Illuminate\Support\Facades\DB::table($tableName)->get(['title','slug']);
+
 }
 
 function http($url) {

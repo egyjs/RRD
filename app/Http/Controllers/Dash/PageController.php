@@ -34,6 +34,7 @@ class PageController extends Controller
         $validatedData = $req->validate([
             'pagetitle' => 'required|max:255',
             'pagecont' => 'required',
+            'pagedesc' => 'required',
         ]);
 
         if ($req->statues == "on"):

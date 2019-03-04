@@ -9,6 +9,7 @@ use MGBoateng\EloquentSlugs\Slugging;
 
 /**
  * @property mixed imgs
+ * @method static where($string, $int)
  */
 class Post extends Model
 {

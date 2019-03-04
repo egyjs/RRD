@@ -33,7 +33,7 @@
                         @csrf
                         {{ method_field("PATCH") }}
                         <div class="row clearfix">
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <div class="form-group">
                                     <label class="control-label">Post Name</label>
                                     <div class="form-line">
@@ -49,10 +49,10 @@
                                     <label class="control-label">Statue</label>
                                     <div class="switch">
                                         <label>
-                                            Off
+                                            deactivate
                                             <input name="statues" type="checkbox" @if($pg->statues == 1) checked="" @endif >
                                             <span class="lever"></span>
-                                            On
+                                            activate
                                         </label>
                                     </div>
                                 </div>

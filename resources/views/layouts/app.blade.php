@@ -31,14 +31,14 @@
                 <ul class="nav-menu">
                     @foreach(config('site.menu') as $name => $url)
                         <li @if($url == "true")  class="menu-has-children" @endif>
-                            <a href="{{ url($url) }}">
+                            <a  @if($url != "true")  href="{{ $url }}" @else href="#" @endif >
                                 {{$name}}
                             </a>
                             @if($url == "true")
                                 @if(!empty(loopMenu($name)))
                                     <ul>
-                                        @foreach((loopMenu($name)) as $subN => $subU)
-                                            <li><a href="{{ url(@$subU) }}">{{ @$subN }}</a></li>
+                                        @foreach((loopMenu($name)) as $page)
+                                            <li><a href="{{ url($page->slug) }}">{{ $page->title  }}</a></li>
                                         @endforeach
                                     </ul>
                                 @endif

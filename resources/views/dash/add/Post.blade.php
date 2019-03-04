@@ -32,7 +32,7 @@
                     <form class="body" method="post" action="{{ route('dash.addpost.p') }}">
                         @csrf
                         <div class="row clearfix">
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <div class="form-group">
                                     <label class="control-label">Post Tittle</label>
                                     <div class="form-line">
@@ -47,10 +47,10 @@
                                     <label class="control-label">Statues</label>
                                     <div class="switch">
                                     <label>
-                                        Off
+                                        deactivate
                                         <input name="statues" checked type="checkbox">
                                         <span class="lever"></span>
-                                        On
+                                        activate
                                     </label>
                                 </div>
                                 </div>

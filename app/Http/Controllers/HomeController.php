@@ -62,8 +62,5 @@ class HomeController extends Controller
         return view('pro.home', compact('pros', 'pageTitle'));
     }
 
-    public function page(){
-
-    }
 
 }

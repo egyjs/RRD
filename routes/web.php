@@ -122,3 +122,8 @@ Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
 
 
 
+
+// pages Routes
+Route::get('/{slug?}', "PageController@page")->name('page');
+
+

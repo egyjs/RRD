@@ -40,6 +40,7 @@ class ProjectsController extends Controller
         $validatedData = $req->validate([
             'protitle' => 'required|max:255',
             'procont' => 'required',
+            'prodesc' => 'required',
         ]);
         $cont = $req->input("procont");
         $imgs = Functions::getImgFromString($cont);
