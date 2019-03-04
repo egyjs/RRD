@@ -60,8 +60,8 @@ return [
       \'short_desc\' => env(\'APP_DESCRIPTION\', \'Site Description\'),
       \'long_desc\' => NULL,
       \'menu\' =>[ /* use `url()` helper with names */
-            "Home"=> "home",
-            "Blog"=> "blog",
+            "Home"=> "/",
+            "Blog"=> "blogs",
             "Projects"=> "projects",
             "Pages"=> "true"
       ]
