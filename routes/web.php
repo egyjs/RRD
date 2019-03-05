@@ -123,15 +123,10 @@ Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
 
 // auto pull server
 Route::post('/gitpull', function (){
-    var_dump($_POST);
+ //   var_dump($_POST);
 
-        $output =  shell_exec( 'cd /home/rrdyqduh/public_html && git reset –hard HEAD && git pull' ) ." \n ";
+    return 'pull !!'. exec( 'cd /home/rrdyqduh/public_html && git reset –hard HEAD && git pull' ) ." \n ";
 
-        $fh = fopen('GitLog.txt','w');
-        fwrite($fh,$output);
-        fclose($fh);
-
-        return 'pull !!'.$output;
 
 
 });
