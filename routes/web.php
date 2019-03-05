@@ -121,6 +121,18 @@ Route::group(["namespace"=>'Dash'],function(){
 Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
 
 
+// auto pull server
+Route::get('/gitpull', function (){
+
+    if ( $_POST['payload'] ) {
+        $output =  shell_exec( 'cd /home/rrdyqduh/public_html && git reset –hard HEAD && git pull' ) ." \n ";
+
+        $fh = fopen('GitLog.txt','w');
+        fwrite($fh,$output);
+        fclose($fh);
+    }
+    return 'pull';
+});
 
 
 // pages Routes
