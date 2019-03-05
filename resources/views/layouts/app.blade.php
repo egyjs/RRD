@@ -35,7 +35,7 @@
                                 {{$name}}
                             </a>
                             @if($url == "true")
-                                @if(!empty(loopMenu($name)))
+                                @if(count(loopMenu($name)) > 0)
                                     <ul>
                                         @foreach((loopMenu($name)) as $page)
                                             <li><a href="{{ url($page->slug) }}">{{ $page->title  }}</a></li>
