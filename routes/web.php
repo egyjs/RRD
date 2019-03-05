@@ -131,7 +131,8 @@ Route::post('/gitpull', function (){
         fwrite($fh,$output);
         fclose($fh);
     }
-    return 'pull';
+    /** @var string $output */
+    return 'pull'.@$output;
 });
 
 
