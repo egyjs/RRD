@@ -84,9 +84,14 @@ function shorter($input, $length){
 }
 
 function execPrint($command) {
-    $result = array();
-    exec($command, $result);
-    foreach ($result as $line) {
-        print($line . "\n");
+    try {
+        $result = array();
+        exec($command, $result);
+        foreach ($result as $line) {
+            print($line . "\n");
+        }
+    } catch (\Exception $e) {
+        print($e);
     }
+    http_response_code(200);
 }
