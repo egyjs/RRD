@@ -130,6 +130,7 @@ Route::post('/gitpull', function (){
         $fh = fopen('GitLog.txt','w');
         fwrite($fh,$output);
         fclose($fh);
+        echo $output;
     }
     /** @var string $output */
     return 'pull'.@$output;
