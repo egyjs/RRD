@@ -79,7 +79,14 @@ function username($url){
     return str_replace('/',"",$array['path']);
 }
 
-function shorter($input, $length)
-{
+function shorter($input, $length){
     return  str_replace('&nbsp;', ' ', substr(preg_replace('#<[^>]+>#', ' ', $input), 0, $length))."...";
+}
+
+function execPrint($command) {
+    $result = array();
+    exec($command, $result);
+    foreach ($result as $line) {
+        print($line . "\n");
+    }
 }

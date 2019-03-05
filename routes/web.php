@@ -125,7 +125,7 @@ Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
 Route::post('/gitpull', function (){
  //   var_dump($_POST);
 
-    return 'pull !!'. exec( 'cd /home/rrdyqduh/public_html && git reset –hard HEAD && git pull' ) ." \n ";
+    print("<pre>" . execPrint("cd /home/rrdyqduh/public_html && git reset –hard HEAD && git pull") . "</pre>");
 
 
 
