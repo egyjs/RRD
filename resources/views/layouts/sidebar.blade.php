@@ -9,7 +9,7 @@
 
         <div class="single-widget protfolio-widget">
         <img class="img-fluiNewsletterd" src="{{ ($singlePost_widget->thumbnail) }}"  style="max-width: 100%; max-height: 200px" alt="">
-        <a href="#">
+        <a href="{{ route("blog.post",$singlePost_widget->slug) }}">
             <h4>{{ $singlePost_widget->title }}</h4>
         </a>
         <div class="desigmation">
