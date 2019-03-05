@@ -14,7 +14,7 @@
                     <a href="{{ route("blog.post",$post->slug) }}">{{ $post->title }}</a>
                 </h3>
                 <p>{{ $function->shorter($post->content,100) }}.</p>
-                <a href="blog-details.html" class="primary-btn text-uppercase mt-15">continue Reading</a>
+                <a href="{{ route("blog.post",$post->slug) }}" class="primary-btn text-uppercase mt-15">continue Reading</a>
                 <div class="post-box">
                     <div class="d-flex">
                         <div>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="post-meta">
                             <div class="meta-head">
-                                <a href="#">DRR</a>
+                                <a href="#">{{ $post->writer->fullname }}</a>
                             </div>
                             <div class="meta-details">
                                 <ul>
@@ -42,7 +42,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <div href="#">
+                                        <div >
                                             <span class="lnr lnr-bubble"></span>
                                             <a href="{{ route("blog.post",$post->slug).'#disqus_thread' }}">00 Comments</a>
                                         </div>
