@@ -126,9 +126,8 @@ Route::post('/gitpull/', function (){
  //   var_dump($_POST);
 /** $_GET = /home/rrdyqduh/public_html/ */
     if(isset($_GET['gitpath'])){
-         var_dump($_GET['gitpath']);
-         print(execPrint(' git -C "'.$_GET['gitpath'].'" reset –hard HEAD'));
-         print(execPrint(' git -C "'.$_GET['gitpath'].'"  pull'));
+        print(execPrint('./autopull.sh '. escapeshellarg($_GET['gitpath'])));
+
     }
 
 });
