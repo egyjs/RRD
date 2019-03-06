@@ -86,10 +86,11 @@ function shorter($input, $length){
 function execPrint($command) {
     try {
         $result = array();
-        exec($command, $result);
+        shell_exec($command, $result);
         foreach ($result as $line) {
-            print($line . "\n");
+            print($line .  "\n");
         }
+        echo '------------------------';
     } catch (\Exception $e) {
         print($e);
     }
