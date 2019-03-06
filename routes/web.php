@@ -117,20 +117,18 @@ Route::group(["namespace"=>'Dash'],function(){
     });
 });
 
-// Error Routes
-Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
-
-
 // auto pull server
 Route::post('/gitpull/', function (){
- //   var_dump($_POST);
-/** $_GET = /home/rrdyqduh/public_html/ */
+    //   var_dump($_POST);
+    /** $_GET = /home/rrdyqduh/public_html/ */
     if(isset($_GET['gitpath'])){
         print(execPrint('./autopull.sh '. escapeshellarg($_GET['gitpath'])));
 
     }
 
 });
+// Error Routes
+Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
 
 
 // pages Routes

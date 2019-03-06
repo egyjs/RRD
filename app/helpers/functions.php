@@ -73,16 +73,6 @@ function http($url) {
     return $url;
 }
 
-
-function username($url){
-    $array = parse_url($url);
-    return str_replace('/',"",$array['path']);
-}
-
-function shorter($input, $length){
-    return  str_replace('&nbsp;', ' ', substr(preg_replace('#<[^>]+>#', ' ', $input), 0, $length))."...";
-}
-
 function execPrint($command) {
     try {
         $result = array();
@@ -96,3 +86,13 @@ function execPrint($command) {
     }
     http_response_code(200);
 }
+
+function username($url){
+    $array = parse_url($url);
+    return str_replace('/',"",$array['path']);
+}
+
+function shorter($input, $length){
+    return  str_replace('&nbsp;', ' ', substr(preg_replace('#<[^>]+>#', ' ', $input), 0, $length))."...";
+}
+
