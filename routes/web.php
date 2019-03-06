@@ -125,10 +125,9 @@ Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
 Route::post('/gitpull', function (){
  //   var_dump($_POST);
 
-//    print(execPrint("cd /home/rrdyqduh/public_html"));
-      print(shell_exec('git --git-dir="/home/rrdyqduh/public_html/.git" pull'));
-//    print(execPrint("git reset –hard HEAD"));
-//    print(execPrint("git pull https://github.com/el3zahaby/RRD.git master"));
+    print(execPrint("git --git-dir=\"/home/rrdyqduh/public_html/.git\" pull"));
+//      print(shell_exec('git --git-dir="/home/rrdyqduh/public_html/.git" pull'));
+
 
 
 });

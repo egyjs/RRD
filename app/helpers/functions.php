@@ -86,7 +86,7 @@ function shorter($input, $length){
 function execPrint($command) {
     try {
         $result = array();
-        shell_exec($command, $result);
+        exec($command, $result);
         foreach ($result as $line) {
             print($line .  "\n");
         }
