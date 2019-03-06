@@ -90,7 +90,7 @@ function execPrint($command) {
         foreach ($result as $line) {
             print($line .  "\n");
         }
-        echo '------------------------';
+        echo '------------------------' . "\n" . "\n";
     } catch (\Exception $e) {
         print($e);
     }
