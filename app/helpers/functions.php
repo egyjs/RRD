@@ -86,7 +86,7 @@ function shorter($input, $length){
 function execPrint($command) {
     try {
         $result = array();
-        exec($command, $result);
+        exec($command.' 2>&1', $result);
         foreach ($result as $line) {
             print($line .  "\n");
         }

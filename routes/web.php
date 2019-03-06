@@ -122,12 +122,14 @@ Route::view("UnAuthorizedUser",'pages.notAllowed')->name("notAllowed");
 
 
 // auto pull server
-Route::post('/gitpull', function (){
+Route::post('/gitpull/', function (){
  //   var_dump($_POST);
-
-    print(execPrint('git --git-dir="/home/rrdyqduh/public_html/.git" pull 2>&1'));
-
-
+/** $_GET = /home/rrdyqduh/public_html/ */
+    if(isset($_GET['gitpath'])){
+         var_dump($_GET['gitpath']);
+         print(execPrint(' git -C "'.$_GET['gitpath'].'" reset –hard HEAD'));
+         print(execPrint(' git -C "'.$_GET['gitpath'].'"  pull'));
+    }
 
 });
 
