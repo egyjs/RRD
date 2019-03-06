@@ -126,7 +126,7 @@ Route::post('/gitpull', function (){
  //   var_dump($_POST);
 
     print(execPrint("git --git-dir=\"/home/rrdyqduh/public_html/.git\" pull"));
-//      print(shell_exec('git --git-dir="/home/rrdyqduh/public_html/.git" pull'));
+      print(shell_exec('git -v'));
 
 
 
