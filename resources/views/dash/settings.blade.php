@@ -103,8 +103,9 @@
                         <h3>Menu</h3>
                         <div class="row clearfix">
                             @foreach((config('site.menu')) as $name => $url)
-                                @if($url != "true" )
-                                <div class="col-md-2">
+
+                                <div @if($url == "true") style="display: none;"  @endif
+                                                                     class="col-md-2">
                                     <div class="form-group">
                                         <label>name:</label>
                                         <label class="form-line">
@@ -113,7 +114,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-md-10">
+                                <div  @if($url == "true") style="display: none;"  @endif class="col-md-10">
                                     <div class="form-group">
                                         <label>link:</label>
 
@@ -124,7 +125,6 @@
                                         </label>
                                     </div>
                                 </div>
-                                @endif
                             @endforeach
                             <span class="addpg"></span>
                             <button title="Add more pages" type="button" class="btn btn-warning" id="addpgbtn">

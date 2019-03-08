@@ -64,7 +64,7 @@ return [
             "Blog"=> "blogs",
             "Projects"=> "projects",
             "Pages"=> "true"
-      ]
+      ],
       "social"=>[
             "facebook" => NULL,
             "twitter" => NULL,
