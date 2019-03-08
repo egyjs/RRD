@@ -21,16 +21,22 @@
                 </div>
             </div>
         @endif
+            @if (\Session::has('status'))
+                <div class="alert alert-info">{{ \Session::get('status') }}</div>
+            @endif
     </div>
     <div class="container-fluid">
         <!-- Input -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
+                <form class="card" method="post" action="{{ route('dash.settings.post') }}" novalidate>
                     <div class="header">
-                        <h2> Settings </h2>
+                        <h2 class="pull-left"> Settings </h2>
+                        <div class="clearfix">
+                            <input type="submit" class="btn btn-primary pull-right "  name="button_1"value="Update">
+                        </div>
                     </div>
-                    <form class="body" method="post" action="{{ route('dash.settings.post') }}" novalidate>
+                    <div class="body" >
                         @csrf
 
                         <h3>main info</h3>
@@ -137,8 +143,8 @@
                         <div class="clearfix">
                             <input type="submit" class="btn btn-primary pull-right " value="Update">
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

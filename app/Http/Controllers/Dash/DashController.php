@@ -7,6 +7,7 @@ use App\Http\Controllers\Functions;
 use App\User;
 use App\Visits;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Redirect;
 use ZanySoft\Zip\Zip;
 
 class DashController extends Controller
@@ -141,6 +143,10 @@ class DashController extends Controller
         fwrite($fp, '<?php return ' . var_export(config('site'), true) . ';');
         fclose($fp);
         Artisan::call('config:cache');
+
+        Auth()->logout();
+
+        return redirect('/login')->with('status', 'every thing is updated!');
     }
 
 }
