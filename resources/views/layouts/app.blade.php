@@ -121,7 +121,8 @@
         </div>
         <div class="row footer-bottom d-flex justify-content-between align-items-center">
             <p class="col-lg-12 footer-text text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                Copyright &copy;{{ date('y') }} All rights reserved | This all Web-site is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by
+                <a style="font-max-size: 2px" href="https://colorlib.com" target="_blank">Colorlib</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
         </div>
     </div>
