@@ -18,7 +18,6 @@
 // Public Routes
 Route::group(['middleware' => ['Visitor']], function () {
     Route::get('/', "HomeController@index")->name('home');
-  //  Route::get('/home', "HomeController@index")->name('home');
 
 
     // Sitemap Routes
@@ -57,6 +56,13 @@ Route::group(["namespace"=>'Dash'],function(){
     Route::prefix('dashboard')->group(function (){
         //Dashboard Homepage
         Route::get('/','DashController@index')->name('dash.home');
+
+
+
+
+        // Website settings
+        Route::get('/settings','DashController@settings')->name('dash.settings');
+        Route::post('/settings','DashController@settings_submit')->name('dash.settings.post');
 
 
         // Visits Details

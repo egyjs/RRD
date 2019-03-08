@@ -1,12 +1,12 @@
 <?php return array (
-  'short_desc' => 'aggregates public PHP packages installable with Composer.',
-  'long_desc' => NULL,
+  'short_desc' => 'test',
+  'long_desc' => 'lol',
   'menu' => 
   array (
     'Home' => 'home',
     'Blog' => 'blogs',
     'Projects' => 'projects',
-    'Pages' => 'true',
+    'tst' => 'tst',
   ),
   'social' => 
   array (

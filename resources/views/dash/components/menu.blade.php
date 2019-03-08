@@ -3,6 +3,9 @@
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="{{ route('dash.home') }}"><i class="material-icons">home</i><span>Home</span></a></li>
         {{--view--}}
+        @if(hasRole('manager'))
+            <li><a href="{{route('dash.settings')}}"><i class="material-icons">settings</i><span class="fix-nav">Site Settings</span></a></li>
+        @endif
         @if(hasRole('manager') or  hasRole('Writer'))
         <li><a href="javascript:void(0);" class="menu-toggle"><i class="material-icons">visibility</i><span>View</span></a>
             <ul class="ml-menu">

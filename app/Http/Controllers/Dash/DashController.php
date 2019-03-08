@@ -1,15 +1,14 @@
 <?php
 namespace App\Http\Controllers\Dash;
 
-use App\Hr;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Functions;
-use App\RegisterCode;
 
 use App\User;
-use App\UserView;
 use App\Visits;
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -37,21 +36,6 @@ class DashController extends Controller
 
     }
 
-    public function viewCodes(){
-        $codes = RegisterCode::all();
-        return view('dash.codes',compact('codes'));
-    }
-
-    public function addCode(){
-        $code = rand(500,99999);
-        RegisterCode::create(['code'=>$code,"statues"=>0]);
-        return $code;
-    }
-
-    public function removeCodes($id){
-        RegisterCode::destroy($id);
-        return redirect()->back()->with(['statues'=>"success","msg"=>"Successfully Deleted The Code"]);
-    }
 
     public function profile(){
         $profile = Auth::user();
@@ -126,66 +110,37 @@ class DashController extends Controller
         endif;
     }
 
-    public function CVview()
-    {
-        $userVlast = UserView::where('by', Auth::user()->id)->orderBy('created_at', 'desc')->first();
-        $path = null;
-        if ($userVlast != null){
-            $path = substr($userVlast->file, 0,strrpos($userVlast->file, '/'));
-            if(!file_exists("storage/cvView/".\auth()->user()->username."/".$path."/screenshot.jpg")):
-                $screen = asset('main/img/web-ui.svg');
-            else:
-                $screen = url('/storage/cvView/' . Auth::user()->us1ername . '/' . "$path/screenshot.jpg");
-            endif;
-        }
-        return view('dash.cvview',compact("screen","path"));
+    public function settings(){
+
+        auth()->user()->authorizeRoles(['Users manager','manager']);  //->hasRole('Users manager');
+        return view('dash.settings');
     }
-    
-    public function AddCVview(Request $request){
-        $request->validate([
-            'html-zip' => 'required|file',
-        ]);
+    public function settings_submit(Request $r){
+        $siteFilePath = base_path('config/site.php');
 
-        if ($request->hasFile('html-zip')) {
-            $zip = $request->file('html-zip');
-            $name = $zip->getClientOriginalName();
-            $noEXE = str_replace(".zip","",$zip->getClientOriginalName());
-            $destination = "/cvView/".Auth::user()->username;
-            $zipPath = storage_path('app/public'.$destination.'/'.  $name);
-            $destinationPath = storage_path('app/public'.$destination);
-            $zip->storeAs($destination, $name,'public');
-            $zipfile = Zip::open($zipPath);
-
-            if (empty(Functions::search("php",$zipfile->listFiles()))){
-                if (in_array("index.html", $zipfile->listFiles($zipPath))) {
-                    mkdir("$destinationPath/$noEXE", 0777, true);
-                    $zipfile->extract("$destinationPath/$noEXE");
-                    $indexPath = "$noEXE/index.html";
-
-                } else{
-                    if (Functions::search("index.html",$zipfile->listFiles())){
-                        $indexPath = Functions::search("index.html",$zipfile->listFiles());
-                        $zipfile->extract($destinationPath);
-                        $indexPath = reset($indexPath);
-                    }
-
-                }
-                unlink($zipPath);
-
-                $usrVu = new UserView();
-                $usrVu->by = Auth::user()->id;
-                $usrVu->file = $indexPath;
-                $usrVu->save();
-                return back();
-            }else{
-                unlink($zipPath);
-                return back()->withErrors(["The compressed file should not contain any back-end files like php "]);
-            }
+        auth()->user()->authorizeRoles(['Users manager','manager']);  //->hasRole('Users manager');
+        $socials = array_combine($r->social_name,$r->social_url);
+        $menus = array_combine($r->menu_name,$r->menu_url);
 
 
+        envUpdate(['APP_NAME'=>$r->siteTitle]);
+
+        $site = array();
+        $req= $r->except(['_token','social_name','social_url','menu_name','menu_url','siteTitle']);
+        foreach($req as $key=>$value){
+            $site[$key]= $value;
         }
+        $site['menu'] = $menus;
+        $site['social'] = $socials;
+
+        config::set(['site'=>$site]);
 
 
+//        dd(config('site'));
+        $fp = fopen(($siteFilePath), 'w');
+        fwrite($fp, '<?php return ' . var_export(config('site'), true) . ';');
+        fclose($fp);
+        Artisan::call('config:cache');
     }
 
 }
