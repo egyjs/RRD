@@ -8,4 +8,14 @@
     </div>
 @endsection
 
-@section('message', __($exception->getMessage() ?: 'Sorry, you are forbidden from accessing this page.'))
+@section('message')
+    <style>
+        code {
+            font-family: monospace, monospace;
+            font-weight: 100;
+            background: #eee;
+            color: purple;
+        }
+    </style>
+<h3>{!! ($exception->getMessage() ?: 'Sorry, you are forbidden from accessing this page.') !!}</h3>
+@endsection

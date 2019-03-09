@@ -25,20 +25,25 @@ class Visitor
             return $next($request);
         else:
             $response = $next($request);
-            $visit = new Visits();
-            $visit->ip = $request->ip();
 
-            $client = new Client();
-            $req = $client->request('GET', config('app.timezone_api') . $request->ip() . '/json/');
+            if($request->ip() != "127.0.0.1") {
+                $visit = new Visits();
+                $visit->ip = $request->ip();
 
-            //$place = json_decode($req->getBody());
+                $client = new Client();
+
+                $req = $client->request('GET', config('app.timezone_api') . $request->ip() . '/json/');
+
+
+                //$place = json_decode($req->getBody());
 //
 //            if (!isset($place->error)) {
 //                @$visit->location = $place->country_name . ', ' . $place->region;
 //            } else {
 //                $visit->location = "IP is wrong";
 //            }
-            $visit->save();
+                $visit->save();
+            }
             return $response->withCookie(Cookie::make('here', 1, 1440));
         endif;
     }

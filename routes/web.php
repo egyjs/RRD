@@ -43,7 +43,7 @@ Route::group(['middleware' => ['Visitor']], function () {
 
     // Auth Routes
     Auth::routes();
-    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+
     Route::get('register/{id?}', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
     // Error Routes

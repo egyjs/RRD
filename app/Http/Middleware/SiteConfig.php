@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Schema;
 
 class SiteConfig
 {
@@ -15,9 +16,8 @@ class SiteConfig
      */
     public function handle($request, Closure $next)
     {
-        // put condition here abdo :-)
-        if (1>2){
-            abort('413','Site Config File Not Found');
+        if(!Schema::hasTable('users')){
+            abort('413','Site Config File Not Found, run code: <code>php artisan mksite</code>');
         } else{
             return $next($request);
         }

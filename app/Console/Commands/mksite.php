@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 
 class mksite extends Command
 {
@@ -42,6 +43,8 @@ class mksite extends Command
     {
         $config = $this->option('config');
         if (($config) == null) {
+            envUpdate(['APP_URL'=>"".request()->getHttpHost(),'APP_DOMAIN'=>request()->getHttpHost()]);
+
             Artisan::call('migrate', array(), $this->getOutput());
             $this->comment("");
 
@@ -50,7 +53,7 @@ class mksite extends Command
             $this->comment("");
 
         }
-        if(!User::where('id', 1)->exists()){
+        if(!Schema::hasTable('mytable')){
             $this->comment("Create a SuperUser(admin):");
 
             $su = new User();
