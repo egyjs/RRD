@@ -127,7 +127,7 @@
 <script src="{{ asset('main/js/jquery.nice-select.min.js') }}"></script>
 <script src="{{ asset('main/js/waypoints.min.js') }}"></script>
 <script src="{{ asset('main/js/mail-script.js') }}"></script>
-<script src="{{ asset('main/js/jquery.textfill.min.js') }}"></script>
+
 <script src="{{ asset('main/js/main.js') }}"></script>
 
 <script type="text/javascript" src="{{ asset('main/js/jquery.instagramFeed.min.js') }}"></script>
@@ -149,7 +149,6 @@
             });
         });
     })(jQuery);
-    $('.banner-content h1').textfill();
 </script>
 
 
