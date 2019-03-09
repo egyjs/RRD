@@ -40,7 +40,8 @@
     </div>
 </div>
 
-<script src="{{ asset('main/js/jquery-3.3.1.min.js') }}"></script>
-<script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+<script src="{{ asset('main/js/vendor/jquery-2.2.4.min.js') }}"></script>
+<script src="{{ asset('main/js/materialize.min.js') }}"></script>
+
 </body>
 </html>
