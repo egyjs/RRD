@@ -146,7 +146,7 @@ class DashController extends Controller
 
         Auth()->logout();
 
-        return redirect('/login')->with('status', 'every thing is updated!');
+        return redirect(route('login'))->with('status', 'every thing is updated!');
     }
 
 }
