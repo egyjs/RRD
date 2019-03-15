@@ -16,7 +16,6 @@ class BlogController extends Controller
         $pageTitle = "Blog";
         return view('blog.home', compact('posts', 'pageTitle'));
     }
-
     public function postid($id)
     {
         $post = Post::where([['id', $id, ['statues', 1]]]);
