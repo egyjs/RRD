@@ -16,6 +16,12 @@
         <link rel="stylesheet" href="{{ asset('main/css/animate.min.css') }}">
         <link rel="stylesheet" href="{{ asset('main/css/owl.carousel.css') }}">
         <link rel="stylesheet" href="{{ asset('main/css/main.css') }}">
+        <style>
+        .media img {
+            width: 100px;
+            height: 100px;
+        }
+        </style>
     @stack("css")
 
 </head>
