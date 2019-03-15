@@ -62,5 +62,17 @@ class HomeController extends Controller
         return view('pro.home', compact('pros', 'pageTitle'));
     }
 
+    public function tag($tag){
+        $posts = Post::withAnyTag([$tag])->get();
+        $projects = Project::withAnyTag([$tag])->get();
+
+
+        $description = "$tag - Search Results";
+        $keywords = "Search, $tag";
+        $pageTitle = "Search Results [ $tag ]";
+
+        return view('pages.search',compact('tag','pageTitle','keywords','posts','projects','description'));
+    }
+
 
 }

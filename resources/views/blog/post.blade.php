@@ -11,7 +11,7 @@
                     <div class="user_details">
                         <div class="float-left">
                             @foreach($post->tagNames() as $tag)
-                                <a href="#">{{ $tag }}</a>
+                                <a href="{{ route("tag",$tag) }}#post-{{ $post->id }}">{{ $tag }}</a>
                             @endforeach
                         </div>
                         <div class="float-right">

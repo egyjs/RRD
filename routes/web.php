@@ -27,6 +27,8 @@ Route::group(['middleware' => ['Visitor']], function () {
         Route::get('/projects', 'SitemapController@projects')->name('sitemap.projects');
     });
 
+    Route::get("/tag/{tag}","HomeController@tag")->name("tag");
+
 
 
     // Blog Routes

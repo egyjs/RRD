@@ -29,64 +29,66 @@
 
 {{--{{ dd(Request::path())  }}--}}
 @if (Request::path() == '/' || Request::path() == 'blogs' || Request::path() == 'projects' || Request::path() == 'home')
-<!-- SEO Meta -->
+    <!-- SEO Meta -->
     <link href="{{ config("app.url") }}" rel="canonical" />
     <meta name="author" content="{{ config("app.name") }}">
     <meta name="description" content="{{ config('app.description') }}">
     <meta name="keywords" content="{{ config("app.keywords") }}">
-<!-- end SEO Meta -->
+    <!-- end SEO Meta -->
 
 
-<!-- favicon, cards, tiles, icons -->
-<meta name="application-name" content="{{ config("app.name") }}" />
-<meta name="msapplication-TileImage" content="{{ url('/logo.png') }}" />
-<meta name="msapplication-square70x70logo" content="{{ url('/logo.png') }}" />
-<meta name="msapplication-square150x150logo" content="{{ url('/logo.png') }}" />
-<meta name="msapplication-wide310x150logo" content="{{ url('/logo.png') }}" />
-<meta name="msapplication-square310x310logo" content="{{ url('/logo.png') }}" />
+    <!-- favicon, cards, tiles, icons -->
+    <meta name="application-name" content="{{ config("app.name") }}" />
+    <meta name="msapplication-TileImage" content="{{ url('/logo.png') }}" />
+    <meta name="msapplication-TileColor" content="#ff8431" />
+    <meta name="msapplication-square70x70logo" content="{{ url('/logo.png') }}" />
+    <meta name="msapplication-square150x150logo" content="{{ url('/logo.png') }}" />
+    <meta name="msapplication-wide310x150logo" content="{{ url('/logo.png') }}" />
+    <meta name="msapplication-square310x310logo" content="{{ url('/logo.png') }}" />
 
 
-<!-- facebook open graph -->
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="{{ config('app.name') }}"/>
-<meta property="og:locale" content="ar_EG"/>
-<meta property="og:locale:alternate" content="en_SU"/>
-<meta property="og:url" content="{{  URL::current()  }}"/>
-<meta property="og:title" content="{{ config("app.name") }} | {{ "الرئيسية" }}"/>
-<meta property="og:image" content="{{ url('/logo.png') }}"/>
-<meta property="og:image:width" content="256"/>
-<meta property="og:image:height" content="256"/>
-<!-- end facebook open graph -->
+    <!-- facebook open graph -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="{{ config('app.name') }}"/>
+    <meta property="og:locale" content="ar_EG"/>
+    <meta property="og:locale:alternate" content="en_SU"/>
+    <meta property="og:url" content="{{  URL::current()  }}"/>
+    <meta property="og:title" content="{{ config("app.name") }} | {{ "الرئيسية" }}"/>
+    <meta property="og:image" content="{{ url('/logo.png') }}"/>
+    <meta property="og:image:width" content="256"/>
+    <meta property="og:image:height" content="256"/>
+    <!-- end facebook open graph -->
 
-<!-- Schema MicroData (Google+,Google, Yahoo, Bing,) -->
-<meta itemprop="name" content="{{ config("app.name") }} | {{ "الرئيسية" }}"/>
-<meta itemprop="url" content="{{  URL::current()  }}"/>
-<meta itemprop="author" content="cascocoe"/>
-<meta itemprop="image" content="{{ url('/logo.png') }}">
-<!-- End Schema MicroData -->
+    <!-- Schema MicroData (Google+,Google, Yahoo, Bing,) -->
+    <meta itemprop="name" content="{{ config("app.name") }} | {{ "الرئيسية" }}"/>
+    <meta itemprop="url" content="{{  URL::current()  }}"/>
+    <meta itemprop="author" content="{{ config('site.social.instagram') }}"/>
+    <meta itemprop="image" content="{{ url('/logo.png') }}">
+    <!-- End Schema MicroData -->
 
-<!-- twitter cards -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@username">
-<meta name="twitter:creator" content="@username">
-<meta name="twitter:title" content="{{ config("app.name") }} | {{ "الرئيسية" }}">
-<meta name="twitter:image:src" content="{{ url('/logo.png') }}">
-<!-- end twitter cards -->
+    <!-- twitter cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ "@".username(config('site.social.twitter')) }}">
+    <meta name="twitter:creator" content="{{ "@".username(config('site.social.twitter')) }}">
+    <meta name="twitter:title" content="{{ config("app.name") }} | {{ "الرئيسية" }}">
+    <meta name="twitter:image:src" content="{{ url('/logo.png') }}">
+    <!-- end twitter cards -->
 @elseif(isset($post) || isset($page) || isset($project) || isset($pro))
     <!-- SEO Meta -->
     <link href="{{  URL::current()  }}" rel="canonical"/>
-    <meta name="description" content="{{ $description }}">
-    <meta name="keywords" content="{{ $keywords }}">
+    <meta name="description" content="{{ $description ?? "" }}">
+    <meta name="keywords" content="{{ $keywords ?? "" }}">
     <!-- end SEO Meta -->
 
 
     <!-- favicon, cards, tiles, icons -->
     <meta name="application-name" content="{{ config("app.name") }} | {{ $pageTitle }}" />
-    <meta name="msapplication-TileImage" content="{{ $image }}" />
-    <meta name="msapplication-square70x70logo" content="{{ $image }}" />
-    <meta name="msapplication-square150x150logo" content="{{ $image }}" />
-    <meta name="msapplication-wide310x150logo" content="{{ $image }}" />
-    <meta name="msapplication-square310x310logo" content="{{ $image }}" />
+    <meta name="msapplication-TileImage" content="{{ $image ?? asset('logo.png') }}" />
+    <meta name="msapplication-TileColor" content="#ff8431" />
+    <meta name="msapplication-square70x70logo" content="{{ $image ?? asset('logo.png') }}" />
+    <meta name="msapplication-square150x150logo" content="{{ $image ?? asset('logo.png') }}" />
+    <meta name="msapplication-wide310x150logo" content="{{ $image ?? asset('logo.png') }}" />
+    <meta name="msapplication-square310x310logo" content="{{ $image ?? asset('logo.png') }}" />
     <!-- end favicon -->
 
     <!-- facebook open graph -->
@@ -96,7 +98,7 @@
     <meta property="og:locale:alternate" content="en_SU"/>
     <meta property="og:url" content="{{  URL::current()  }}"/>
     <meta property="og:title" content="{{ config("app.name") }} | {{ $pageTitle }}"/>
-    <meta property="og:image" content="{{ $image  }}"/>
+    <meta property="og:image" content="{{ $image ?? asset('logo.png') }}"/>
     <meta property="og:image:width" content="400"/>
     <meta property="og:image:height" content="400"/>
     <!-- end facebook open graph -->
@@ -104,15 +106,15 @@
     <!-- Schema MicroData (Google+,Google, Yahoo, Bing,) -->
     <meta itemprop="name" content="{{ config("app.name") }} | {{ "الرئيسية" }}"/>
     <meta itemprop="url" content="{{  URL::current()  }}"/>
-    <meta itemprop="author" content="cascocoe"/>
+    <meta itemprop="author" content="{{ config('site.social.instagram') }}"/>
     <meta itemprop="image" content="{{ url('/logo.png') }}">
     <!-- End Schema MicroData -->
 
     <!-- twitter cards -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@cascocode">
-    <meta name="twitter:creator" content="{{ $creator }}">
+    <meta name="twitter:site" content="{{ "@".username(config('site.social.twitter')) }}">
+    <meta name="twitter:creator" content="{{ "@".username(config('site.social.twitter')) }}">
     <meta name="twitter:title" content="{{ config("app.name") }} |  {{ $pageTitle }}">
-    <meta name="twitter:image:src" content="{{ $image  }}">
+    <meta name="twitter:image:src" content="{{ $image ?? asset('logo.png') }}">
     <!-- end twitter cards -->
 @endif

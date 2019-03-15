@@ -11,7 +11,7 @@
                     <div class="user_details">
                         <div class="float-left">
                             @foreach($pro->tagNames() as $tag)
-                                <a href="#">{{ $tag }}</a>
+                                <a href="{{ route("tag",$tag) }}#project-{{ $pro->id }}">{{ $tag }}</a>
                             @endforeach
                         </div>
                         <div class="float-right">

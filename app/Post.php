@@ -22,6 +22,12 @@ class Post extends Model
         'seperator' => '-'
     ];
 
+
+    public function newQuery($excludeDeleted = true) {
+        return parent::newQuery($excludeDeleted)
+            ->where("statues", '=', 1);
+    }
+
     public function writer(){
        return $this->belongsTo(User::class,'by');
     }
