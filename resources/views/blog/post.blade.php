@@ -10,8 +10,8 @@
                     <h4>{{ $post->title }}</h4>
                     <div class="user_details">
                         <div class="float-left">
-                            @foreach($post->tagNames() as $tag)
-                                <a href="{{ route("tag",$tag) }}#post-{{ $post->id }}">{{ $tag }}</a>
+                            @foreach($post->tags as $tag)
+                                <a href="{{ route("tag",$tag->slug) }}#post-{{ $post->id }}">{{ $tag->name }}</a>
                             @endforeach
                         </div>
                         <div class="float-right">
