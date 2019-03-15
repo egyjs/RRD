@@ -53,7 +53,7 @@ class mksite extends Command
             $this->comment("");
 
         }
-        if(!Schema::hasTable('mytable')){
+        if(!Schema::hasTable('users')){
             $this->comment("Create a SuperUser(admin):");
 
             $su = new User();
