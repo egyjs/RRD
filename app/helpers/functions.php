@@ -96,3 +96,17 @@ function shorter($input, $length){
     return  str_replace('&nbsp;', ' ', substr(preg_replace('#<[^>]+>#', ' ', $input), 0, $length))."...";
 }
 
+function configItemType($itemName){
+    switch ($itemName){
+        case 'menu':
+            return 'page url';
+            break;
+        case 'social':
+            return 'url';
+            break;
+        case 'email':
+            return $itemName;
+            break;
+    }
+}
+

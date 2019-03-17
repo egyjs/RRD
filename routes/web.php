@@ -14,10 +14,10 @@
 //$domin = config("app.domain");
 
 
-
+//dd(config('site.menu.home'));
 // Public Routes
 Route::group(['middleware' => ['Visitor']], function () {
-    Route::get('/', "HomeController@index")->name('home');
+    Route::get(config('site.menu.home'), "HomeController@index")->name('home');
 
 
     // Sitemap Routes
@@ -32,13 +32,13 @@ Route::group(['middleware' => ['Visitor']], function () {
 
 
     // Blog Routes
-    Route::group(['prefix'=>"blogs"],function (){
+    Route::group(['prefix'=>config('site.menu.blogs')],function (){
         Route::get("/","BlogController@index")->name('blog');
         Route::get("/{title}","BlogController@post")->name('blog.post');
     });
 
     // Projects Routes
-    Route::group(['prefix'=>"projects"],function (){
+    Route::group(['prefix'=>config('site.menu.projects')],function (){
         Route::get("/", "HomeController@allProjects")->name('projects');
         Route::get('/{slug}', 'HomeController@singleProject')->name('project.post');
     });

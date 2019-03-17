@@ -1,17 +1,19 @@
 <?php return array (
-  'short_desc' => 'test',
-  'long_desc' => 'none',
+  'long_description' => NULL,
   'menu' => 
   array (
-    'Home' => '/',
-    'Blog' => 'blogs',
-    'Projects' => 'projects',
-    'Pages' => 'true',
+    'home' => '/',
+    'blogs' => 'blogs',
+    'projects' => 'projects',
   ),
   'social' => 
   array (
-    'facebook' => 'https://www.facebook.com/El3zahaby',
-    'twitter' => 'https://twitter.com/rrdyemen',
-    'instagram' => 'https://www.instagram.com/rrdyemen/',
+    'facebook' => 'fb.com',
+    'twitter' => '',
+    'instagram' => '',
+  ),
+  'email' => 
+  array (
+    'main' => 'el0zahaby@gmail.com',
   ),
 );

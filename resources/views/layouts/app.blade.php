@@ -36,22 +36,22 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     @foreach(config('site.menu') as $name => $url)
-                        <li @if($url == "true")  class="menu-has-children" @endif>
-                            <a  @if($url != "true")  href="{{ $url }}" @else href="#" @endif >
+                        <li>{{ '' }}
+                            <a href="{{ route(app('router')->getRoutes()->match(app('request')->create($url))->getName()) }}">
                                 {{$name}}
                             </a>
-                            @if($url == "true")
-                                @if(count(loopMenu($name)) > 0)
-                                    <ul>
-                                        @foreach((loopMenu($name)) as $page)
-                                            <li><a href="{{ url($page->slug) }}">{{ $page->title  }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                @endif
-
-                            @endif
                         </li>
                     @endforeach
+
+                        @if(count(loopMenu("pages")) > 0)
+                            <li class="menu-has-children"><a href="javascript:void(0);">Pages</a>
+                                <ul>
+                                    @foreach(loopMenu("pages") as $page)
+                                        <li><a href="{{ $page->slug }}">{{ $page->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endif
                 </ul>
             </nav>
         </div>

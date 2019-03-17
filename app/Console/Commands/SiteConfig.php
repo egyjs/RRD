@@ -57,20 +57,20 @@ return [
     |
     */
     
-      \'short_desc\' => env(\'APP_DESCRIPTION\', \'Site Description\'),
-      \'long_desc\' => NULL,
+      \'long_description\' => NULL,
       \'menu\' =>[ /* use `url()` helper with names */
-            "Home"=> "/",
-            "Blog"=> "blogs",
-            "Projects"=> "projects",
-            "Pages"=> "true"
+            "home"=> "/",
+            "blogs"=> "blogs",
+            "projects"=> "projects",
       ],
       "social"=>[
-            "facebook" => NULL,
-            "twitter" => NULL,
-            "instagram" => NULL,
+            "facebook" => "",
+            "twitter" => "",
+            "instagram" => "",
+      ],
+      "email"=>[
+            "main"=>"",     
       ]
-
 ];
 
 ';
@@ -79,16 +79,24 @@ return [
             Artisan::call('config:cache');
         }
 
-        envUpdate(['APP_NAME'=>$this->ask('what is your site name')]);
+        envUpdate(['APP_NAME'=>$this->ask('what is your site name',config('app.name'))]);
 
-        $Sdisc =  $this->ask('what is your site SHORT description',config('site.short_desc'));
+        $Sdisc =  $this->ask('what is your site description',config('app.description'));
         envUpdate(['APP_DESCRIPTION'=> $Sdisc]);
-        config::set(['site.long_desc' => $this->ask('what is your site LONG description',config('site.long_desc'))]);
 
-        config::set(['site.social.facebook' => $this->ask("Facebook Link [you can leave it blank]",config('site.social.facebook'))]);
-        config::set(['site.social.twitter' => $this->ask("Twitter Link [you can leave it blank]",config('site.social.twitter'))]);
-        config::set(['site.social.instagram' => $this->ask("Instagram Link [you can leave it blank]",config('site.social.instagram'))]);
 
+        $askResult = array();
+        foreach (config('site') as $item => $value){
+            if(!is_array($value)) {
+                $askResult['site'][$item] = $this->ask("What is $item ?", $value);
+            } else {
+                $this->comment("Start $item:");
+                foreach ($value as $itemOfArray => $valOfArray) {
+                    $askResult['site'][$item][$itemOfArray] = $this->ask("what is your $itemOfArray ".configItemType($item)."? ", $valOfArray);
+                }
+            }
+        }
+        config::set($askResult);
         $fp = fopen(($siteFilePath), 'w');
         fwrite($fp, '<?php return ' . var_export(config('site'), true) . ';');
         fclose($fp);
