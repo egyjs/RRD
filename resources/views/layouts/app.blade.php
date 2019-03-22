@@ -35,8 +35,10 @@
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
+
                     @foreach(config('site.menu') as $name => $url)
-                        <li>{{ '' }}
+                        @if( $name != '')
+                        <li>
                             <a href="<?php
                             try{
                                 echo route(app('router')->getRoutes()->match(app('request')->create($url))->getName());
@@ -47,6 +49,7 @@
                                 {{$name}}
                             </a>
                         </li>
+                        @endif
                     @endforeach
 
                         @if(count(loopMenu("pages",1)) > 0)

@@ -120,7 +120,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div  @if($url == "true") style="display: none;"  @endif class="col-md-10">
+                                <div   class="col-md-10">
                                     <div class="form-group">
                                         <label>link:</label>
 
@@ -129,10 +129,14 @@
                                                  value='{{ $url }}'
                                                    class="form-control" name="menu_url[]" >
                                         </label>
+                                        <label class="help-info">you can remove page from menu by empty the name</label>
+
                                     </div>
+
                                 </div>
                             @endforeach
-                            <span class="addpg"></span>
+
+                                <span class="addpg"></span>
                             <button title="Add more pages" type="button" class="btn btn-warning" id="addpgbtn">
                                 <i class="fa fa-plus"></i></button>
 

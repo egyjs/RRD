@@ -123,12 +123,14 @@ class DashController extends Controller
         auth()->user()->authorizeRoles(['Users manager','manager']);  //->hasRole('Users manager');
         $socials = array_combine($r->social_name,$r->social_url);
         $menus = array_combine($r->menu_name,$r->menu_url);
+//        unset($menus[null]);
 
 
         envUpdate(['APP_NAME'=>$r->siteTitle]);
+        envUpdate(['APP_DESCRIPTION'=>$r->short_desc]);
 
         $site = array();
-        $req= $r->except(['_token','social_name','social_url','menu_name','menu_url','siteTitle']);
+        $req= $r->except(['_token','short_desc','social_name','social_url','menu_name','menu_url','siteTitle']);
         foreach($req as $key=>$value){
             $site[$key]= $value;
         }
@@ -144,9 +146,9 @@ class DashController extends Controller
         fclose($fp);
         Artisan::call('config:cache');
 
-
         sleep(3);
         return Redirect::back()->with('status','every thing is updated!');
+
 
     }
 
