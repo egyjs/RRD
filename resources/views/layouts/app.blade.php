@@ -84,7 +84,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
                     <h6 class="footer_title">About Us</h6>
-                    <p>{{ config('site.short_desc') }}</p>
+                    <p>{{ config('app.description') }}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6">

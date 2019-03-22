@@ -5,7 +5,7 @@
         <div class
              ="row fullscreen d-flex align-items-center justify-content-center">
             <div class="banner-content text-center col-lg-8">
-                <h1>{{ config('site.short_desc') }}</h1>
+                <h1>{{ config('app.description') }}</h1>
             </div>
         </div>
     </div>

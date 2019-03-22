@@ -57,7 +57,7 @@
                                     <div class="form-line">
                                         <textarea required
                                                   class="form-control" name="short_desc"
-                                                  placeholder="Short descriptions">{{ config('site.short_desc') }}</textarea>
+                                                  placeholder="Short descriptions">{{ config('app.description') }}</textarea>
                                     </div>
                                 </div>
                             </div>
