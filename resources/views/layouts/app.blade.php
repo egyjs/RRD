@@ -37,7 +37,13 @@
                 <ul class="nav-menu">
                     @foreach(config('site.menu') as $name => $url)
                         <li>{{ '' }}
-                            <a href="{{ route(app('router')->getRoutes()->match(app('request')->create($url))->getName()) }}">
+                            <a href="<?php
+                            try{
+                                echo route(app('router')->getRoutes()->match(app('request')->create($url))->getName());
+                            }catch (Exception $exception){
+                                echo $url;
+                            }
+                            ?>">
                                 {{$name}}
                             </a>
                         </li>
