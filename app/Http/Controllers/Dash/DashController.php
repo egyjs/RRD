@@ -142,12 +142,12 @@ class DashController extends Controller
         $fp = fopen(($siteFilePath), 'w');
         fwrite($fp, '<?php return ' . var_export(config('site'), true) . ';');
         fclose($fp);
-        Artisan::call('config:cache');
+        if (Artisan::call('config:cache')){
+            return Redirect::back()->with('status','every thing is updated!');
+        }
 
-        Auth()->logout();
 
 
-        return Redirect::route('login')->with('status','every thing is updated!');
 
     }
 
