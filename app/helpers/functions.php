@@ -57,12 +57,12 @@ function hasRole($roleName){
 /**
  * @param $name
  */
-function loopMenu($name){
+function loopMenu($name,$limit = 10){
     if (substr($name, -1) != 's') {
         $name = $name."s";
     }
     $tableName = lcfirst($name);
-    return \Illuminate\Support\Facades\DB::table($tableName)->get(['title','slug']);
+    return \Illuminate\Support\Facades\DB::table($tableName)->limit($limit)->get(['title','slug']);
 
 }
 

@@ -43,11 +43,11 @@
                         </li>
                     @endforeach
 
-                        @if(count(loopMenu("pages")) > 0)
+                        @if(count(loopMenu("pages",1)) > 0)
                             <li class="menu-has-children"><a href="javascript:void(0);">Pages</a>
                                 <ul>
-                                    @foreach(loopMenu("pages") as $page)
-                                        <li><a href="{{ $page->slug }}">{{ $page->name }}</a></li>
+                                    @foreach(loopMenu("pages",4) as $page)
+                                        <li><a href="{{ $page->slug }}">{{ $page->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
