@@ -42,6 +42,7 @@
                                 echo route(app('router')->getRoutes()->match(app('request')->create($url))->getName());
                             }catch (Exception $exception){
                                 echo $url;
+                                echo "<!-- $exception -->";
                             }
                             ?>">
                                 {{$name}}
