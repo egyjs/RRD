@@ -14,9 +14,9 @@
 //$domin = config("app.domain");
 
 
-//dd(config('site.menu.home'));
 // Public Routes
 Route::group(['middleware' => ['Visitor']], function () {
+
     Route::get(config('site.menu.home'), "HomeController@index")->name('home');
 
 
