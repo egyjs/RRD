@@ -144,6 +144,7 @@ class DashController extends Controller
         fclose($fp);
         Artisan::call('config:cache');
 
+        Auth()->logout();
 
 
         return Redirect::route('login')->with('status','every thing is updated!');
