@@ -25,8 +25,8 @@ class UsersController extends Controller
 
     public function allView(){
         auth()->user()->authorizeRoles(['Users manager','manager']);  //->hasRole('Users manager');
-        $users = User::whereNotIn('id',[\auth()->user()->id])->skip(1)->take(PHP_INT_MAX)->get();
-        dd($users,PHP_INT_MAX,User::whereNotIn('id',[\auth()->user()->id])->skip(10)->take(PHP_INT_MAX)->get());
+        $users = User::whereNotIn('id',[\auth()->user()->id])->orderBy('id')->skip(1)->take(PHP_INT_MAX)->get();
+        dd($users);
         return view('dash.users',compact('users'));
     }
 
