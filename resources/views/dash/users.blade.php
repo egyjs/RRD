@@ -44,7 +44,7 @@
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                     <tr>
-                                        <th>Code</th>
+                                        <th>Username</th>
                                         <th>Current Jop</th>
                                         <th>Modify Jop</th>
                                         <th>Delete</th>
