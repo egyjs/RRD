@@ -71,6 +71,7 @@
                                             <td>
                                                 <select onchange="changeType({{ $user->id }},$(this).val())" class="form-control show-tick">
                                                     <option value="">-- Please select --</option>
+                                                    <option value="manager">Manager (admin)</option>
                                                     <option value="User">Normal User</option>
                                                     <option value="Writer">Writer</option>
                                                     <option value="Users manager">Users Manger</option>
