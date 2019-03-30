@@ -1,9 +1,10 @@
 <div class="col-lg-4 sidebar">
     <div class="single-widget search-widget">
-        <form class="example" action="#" style="margin:auto;max-width:300px">
-            <input type="text" placeholder="Search Posts" name="search2">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
+        <div class="example" style="margin:auto;max-width:300px">
+
+            <input type="text" placeholder="Search Posts or Projects" id="sidesearch">
+            <button type="button" onclick="window.location ='/q/'+$('#sidesearch').val()"><i class="fa fa-search"></i></button>
+        </div>
     </div>
 
     @if($singlePost_widget)

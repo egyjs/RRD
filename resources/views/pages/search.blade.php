@@ -121,3 +121,9 @@
 
     </div>
 @endsection
+
+@push('js')
+<script>
+    $(".main-body").html($(".main-body").html().replace(/{{$tag}}/gi,'<b>$&</b>'));
+</script>
+@endpush

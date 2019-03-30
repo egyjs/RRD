@@ -2129,32 +2129,32 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
   font-size: 14px;
   border: 1px solid #8050fa; }
-.search-widget form.example {
+.search-widget div.example {
   border: 1px solid #eee;
   background: #f9f9ff;
   border-radius: 50px; }
-.search-widget form.example input[type="text"] {
+.search-widget div.example input[type="text"] {
   padding: 13px 20px;
   font-size: 14px;
   border: none;
   float: left;
   width: 80%;
   background: transparent; }
-  .search-widget form.example input[type="text"]:focus {
+  .search-widget div.example input[type="text"]:focus {
     outline: none; }
-  .search-widget form.example input[type="text"].placeholder {
+  .search-widget div.example input[type="text"].placeholder {
     text-transform: uppercase;
     font-size: 12px; }
-  .search-widget form.example input[type="text"]:-moz-placeholder {
+  .search-widget div.example input[type="text"]:-moz-placeholder {
     text-transform: uppercase;
     font-size: 12px; }
-  .search-widget form.example input[type="text"]::-moz-placeholder {
+  .search-widget div.example input[type="text"]::-moz-placeholder {
     text-transform: uppercase;
     font-size: 12px; }
-  .search-widget form.example input[type="text"]::-webkit-input-placeholder {
+  .search-widget div.example input[type="text"]::-webkit-input-placeholder {
     text-transform: uppercase;
     font-size: 12px; }
-.search-widget form.example button {
+.search-widget div.example button {
   float: left;
   width: 20%;
   padding: 5px 4px 3px 15px;
@@ -2163,12 +2163,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 17px;
   border: none;
   cursor: pointer; }
-  .search-widget form.example button:focus {
+  .search-widget div.example button:focus {
     outline: none; }
   @media (max-width: 1024px) {
-    .search-widget form.example button {
+    .search-widget div.example button {
       padding-left: 2px; } }
-.search-widget form.example::after {
+.search-widget div.example::after {
   content: "";
   clear: both;
   display: table; }

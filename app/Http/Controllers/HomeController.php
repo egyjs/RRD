@@ -74,5 +74,19 @@ class HomeController extends Controller
         return view('pages.search',compact('tag','pageTitle','keywords','posts','projects','description'));
     }
 
+    public function search($input){
+        $posts = Post::where('title', 'LIKE', '%' .$input. '%')
+            ->orWhere('content', 'LIKE', '%' .$input. '%')->get();
+        $projects = Project::where('title', 'LIKE', '%' .$input. '%')
+            ->orWhere('content', 'LIKE', '%' .$input. '%')->get();
+
+
+        $description = "$input - Search Results";
+        $keywords = "Search, $input";
+        $pageTitle = "Search Results [ $input ]";
+
+        $tag = $input;
+        return view('pages.search',compact('tag','pageTitle','keywords','posts','projects','description'));
+    }
 
 }

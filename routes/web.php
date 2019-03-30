@@ -19,6 +19,8 @@ Route::group(['middleware' => ['Visitor']], function () {
 
     Route::get('/', "HomeController@index")->name('home');
 
+    Route::get('/q/{input}', "HomeController@search")->name('search');
+
 
     // Sitemap Routes
     Route::group(['prefix' => "sitemap.xml"], function () {

@@ -1,15 +1,19 @@
 <?php return array (
-  'long_desc' => 'rdsd',
+  'long_description' => NULL,
   'menu' => 
   array (
-    'home' => '/',
-    'blogs' => 'blogs',
-    'r' => 'projects',
+    'home' => 'Home',
+    'blogs' => 'BLOGS',
+    'projects' => 'PROJECTS',
   ),
   'social' => 
   array (
-    'facebook' => 'fb.com',
-    'twitter' => 'https://www.facebook.com/RrdYemen/',
-    'instagram' => NULL,
+    'facebook' => '',
+    'twitter' => '',
+    'instagram' => '',
+  ),
+  'email' => 
+  array (
+    'main' => '',
   ),
 );

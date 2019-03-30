@@ -59,9 +59,9 @@ return [
     
       \'long_description\' => NULL,
       \'menu\' =>[ /* use `url()` helper with names */
-            "home"=> "/",
-            "blogs"=> "blogs",
-            "projects"=> "projects",
+            "home"=> "Home",
+            "blogs"=> "BLOGS",
+            "projects"=> "PROJECTS",
       ],
       "social"=>[
             "facebook" => "",
